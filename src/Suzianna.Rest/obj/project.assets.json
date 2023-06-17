@@ -1,0 +1,229 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NFluent/2.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NFluent.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NFluent.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "YAXLib/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/YAXLib.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/YAXLib.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Suzianna.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "nfluent": "2.8.0"
+        },
+        "compile": {
+          "bin/placeholder/Suzianna.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Suzianna.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "NFluent/2.8.0": {
+      "sha512": "VyPs/yIywwO3nnK9wYSWe82FLywVXXZiB+a5DfFjlHi27eZQqZ5MsShoHBEyDRQfZDLMapp795v4SJYuCxyCjw==",
+      "type": "package",
+      "path": "nfluent/2.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/Icon.png",
+        "lib/net20/NFluent.dll",
+        "lib/net20/NFluent.pdb",
+        "lib/net20/NFluent.xml",
+        "lib/net30/NFluent.dll",
+        "lib/net30/NFluent.pdb",
+        "lib/net30/NFluent.xml",
+        "lib/net35/NFluent.XML",
+        "lib/net35/NFluent.dll",
+        "lib/net35/NFluent.pdb",
+        "lib/net40/NFluent.XML",
+        "lib/net40/NFluent.dll",
+        "lib/net40/NFluent.pdb",
+        "lib/net45/NFluent.dll",
+        "lib/net45/NFluent.pdb",
+        "lib/net45/NFluent.xml",
+        "lib/netstandard1.3/NFluent.dll",
+        "lib/netstandard1.3/NFluent.pdb",
+        "lib/netstandard1.3/NFluent.xml",
+        "lib/netstandard2.0/NFluent.dll",
+        "lib/netstandard2.0/NFluent.pdb",
+        "lib/netstandard2.0/NFluent.xml",
+        "nfluent.2.8.0.nupkg.sha512",
+        "nfluent.nuspec"
+      ]
+    },
+    "YAXLib/3.0.1": {
+      "sha512": "mWVmm0bgcWXGK4b0moR05AmNi7noR+kcd19Ns8FUuaBwKPESSa1mjNIgByzrhOTWnMlzBKenz/7Lxl33eWzTEw==",
+      "type": "package",
+      "path": "yaxlib/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "YAXLib_256x256.png",
+        "lib/net461/YAXLib.dll",
+        "lib/net461/YAXLib.xml",
+        "lib/netstandard2.0/YAXLib.dll",
+        "lib/netstandard2.0/YAXLib.xml",
+        "yaxlib.3.0.1.nupkg.sha512",
+        "yaxlib.nuspec"
+      ]
+    },
+    "Suzianna.Core/1.0.0": {
+      "type": "project",
+      "path": "../Suzianna.Core/Suzianna.Core.csproj",
+      "msbuildProject": "../Suzianna.Core/Suzianna.Core.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Suzianna.Core >= 1.0.0",
+      "YAXLib >= 3.0.1",
+      "newtonsoft.json >= 13.0.1"
+    ]
+  },
+  "packageFolders": {
+    "/Users/dev-art/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/dev-art/RiderProjects/appointment-engine/src/Suzianna.Rest/Suzianna.Rest.csproj",
+      "projectName": "Suzianna.Rest",
+      "projectPath": "/Users/dev-art/RiderProjects/appointment-engine/src/Suzianna.Rest/Suzianna.Rest.csproj",
+      "packagesPath": "/Users/dev-art/.nuget/packages/",
+      "outputPath": "/Users/dev-art/RiderProjects/appointment-engine/src/Suzianna.Rest/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/dev-art/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "/Users/dev-art/RiderProjects/appointment-engine/src/Suzianna.Core/Suzianna.Core.csproj": {
+              "projectPath": "/Users/dev-art/RiderProjects/appointment-engine/src/Suzianna.Core/Suzianna.Core.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "YAXLib": {
+            "target": "Package",
+            "version": "[3.0.1, )"
+          },
+          "newtonsoft.json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.15, 6.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.15, 6.0.15]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/7.0.202/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

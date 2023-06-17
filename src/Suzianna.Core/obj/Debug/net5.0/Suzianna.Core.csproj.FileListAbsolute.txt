@@ -1,0 +1,14 @@
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/bin/Debug/net5.0/Suzianna.Core.deps.json
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/bin/Debug/net5.0/Suzianna.Core.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/bin/Debug/net5.0/Suzianna.Core.pdb
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.csproj.AssemblyReference.cache
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.ExceptionFormats.resources
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.csproj.GenerateResource.cache
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.AssemblyInfoInputs.cache
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.AssemblyInfo.cs
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.csproj.CoreCompileInputs.cache
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/refint/Suzianna.Core.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/Suzianna.Core.pdb
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/obj/Debug/net5.0/ref/Suzianna.Core.dll

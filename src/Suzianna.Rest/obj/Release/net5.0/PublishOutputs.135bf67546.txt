@@ -1,0 +1,8 @@
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/Suzianna.Rest.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/Suzianna.Rest.deps.json
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/Suzianna.Rest.pdb
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/Newtonsoft.Json.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/NFluent.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/YAXLib.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/Suzianna.Core.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/publish/Suzianna.Core.pdb

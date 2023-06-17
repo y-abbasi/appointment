@@ -1,0 +1,15 @@
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/Suzianna.Rest.deps.json
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/Suzianna.Rest.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/Suzianna.Rest.pdb
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/Suzianna.Core.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/bin/Release/net5.0/Suzianna.Core.pdb
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.csproj.AssemblyReference.cache
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.AssemblyInfoInputs.cache
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.AssemblyInfo.cs
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.csproj.CoreCompileInputs.cache
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.csproj.CopyComplete
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/refint/Suzianna.Rest.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/Suzianna.Rest.pdb
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Rest/obj/Release/net5.0/ref/Suzianna.Rest.dll

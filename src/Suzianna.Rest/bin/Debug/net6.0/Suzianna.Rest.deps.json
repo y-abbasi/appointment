@@ -1,0 +1,86 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Suzianna.Rest/1.0.0": {
+        "dependencies": {
+          "Suzianna.Core": "1.0.0",
+          "YAXLib": "3.0.1",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Suzianna.Rest.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
+      },
+      "NFluent/2.8.0": {
+        "runtime": {
+          "lib/netstandard2.0/NFluent.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "YAXLib/3.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/YAXLib.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.1.140"
+          }
+        }
+      },
+      "Suzianna.Core/1.0.0": {
+        "dependencies": {
+          "NFluent": "2.8.0"
+        },
+        "runtime": {
+          "Suzianna.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Suzianna.Rest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    },
+    "NFluent/2.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyPs/yIywwO3nnK9wYSWe82FLywVXXZiB+a5DfFjlHi27eZQqZ5MsShoHBEyDRQfZDLMapp795v4SJYuCxyCjw==",
+      "path": "nfluent/2.8.0",
+      "hashPath": "nfluent.2.8.0.nupkg.sha512"
+    },
+    "YAXLib/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mWVmm0bgcWXGK4b0moR05AmNi7noR+kcd19Ns8FUuaBwKPESSa1mjNIgByzrhOTWnMlzBKenz/7Lxl33eWzTEw==",
+      "path": "yaxlib/3.0.1",
+      "hashPath": "yaxlib.3.0.1.nupkg.sha512"
+    },
+    "Suzianna.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

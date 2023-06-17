@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VMpBzONTFZvmGAkg0D0IR1TUBe5coBHWZpCDG3wNjS6zBvCeuDVRV3WtWt0HJygFSUJj3pLgHG552MqXFXUSBw==",
+  "success": true,
+  "projectFilePath": "/Users/dev-art/RiderProjects/appointment-engine/src/Suzianna.Reporting/Suzianna.Reporting.csproj",
+  "expectedPackageFiles": [
+    "/Users/dev-art/.nuget/packages/microsoft.netcore.app.ref/6.0.15/microsoft.netcore.app.ref.6.0.15.nupkg.sha512",
+    "/Users/dev-art/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.15/microsoft.aspnetcore.app.ref.6.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

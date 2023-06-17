@@ -1,0 +1,3 @@
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Reporting/bin/Release/net5.0/publish/Suzianna.Reporting.dll
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Reporting/bin/Release/net5.0/publish/Suzianna.Reporting.deps.json
+/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Reporting/bin/Release/net5.0/publish/Suzianna.Reporting.pdb
