@@ -8,6 +8,7 @@ public interface IDoctorState : IAggregateState<DoctorId>, IApplyEvent<DoctorDef
 {
     Range<TimeSpan> DurationConstraint { get; }
     WeeklySchedule WeeklySchedule { get; }
+    int NumberOfAllowedOverlappingAppointment { get;  }
 }
 
 public record DoctorNotInitializedState(DoctorId Id) : AggregateState<DoctorId>(Id), IDoctorState
@@ -15,6 +16,7 @@ public record DoctorNotInitializedState(DoctorId Id) : AggregateState<DoctorId>(
     Range<TimeSpan> IDoctorState.DurationConstraint => throw new BusinessException("BR-1001", "Entity not found.");
 
     WeeklySchedule IDoctorState.WeeklySchedule => throw new BusinessException("BR-1001", "Entity not found.");
+    int IDoctorState.NumberOfAllowedOverlappingAppointment => throw new BusinessException("BR-1001", "Entity not found.");
 
     public IDoctorState Apply(DoctorDefinedEvent @event)
     {
@@ -31,6 +33,7 @@ public abstract record DoctorInitializedState
     (DoctorId Id, WeeklySchedule WeeklySchedule) : AggregateState<DoctorId>(Id), IDoctorState
 {
     public abstract Range<TimeSpan> DurationConstraint { get; }
+    public abstract int NumberOfAllowedOverlappingAppointment { get; }
 
     public IDoctorState Apply(DoctorDefinedEvent @event)
     {
@@ -43,6 +46,8 @@ public record DoctorGeneralPractitionerState(DoctorId Id, WeeklySchedule WeeklyS
 {
     public override Range<TimeSpan> DurationConstraint =>
         new Range<TimeSpan>(TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(15));
+
+    public override int NumberOfAllowedOverlappingAppointment => 2;
 }
 
 public record DoctorSpecialistState(DoctorId Id, WeeklySchedule WeeklySchedule) : DoctorInitializedState(Id,
@@ -50,4 +55,6 @@ public record DoctorSpecialistState(DoctorId Id, WeeklySchedule WeeklySchedule) 
 {
     public override Range<TimeSpan> DurationConstraint =>
         new Range<TimeSpan>(TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(30));
+
+    public override int NumberOfAllowedOverlappingAppointment => 3;
 }

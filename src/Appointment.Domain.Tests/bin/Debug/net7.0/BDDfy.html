@@ -29,13 +29,13 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
           <li class='scenarioSummary'>
             <div class='summaryLine'>
               <div class='summaryLabel'>Scenarios</div>
-              <span class='summaryCount'>2</span>
+              <span class='summaryCount'>1</span>
             </div>
           </li>
           <li class='Passed'>
             <div class='summaryLine'>
               <div class='summaryLabel'>Passed</div>
-              <span class='summaryCount'>2</span>
+              <span class='summaryCount'>1</span>
             </div>
           </li>
           <li class='Inconclusive'>
@@ -78,13 +78,16 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
               </div>
               <div class='scenarios'>
                 <div class='scenario'>
-                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-1'>The appointment should be during doctors presents</div>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-1'>The number of doctors overlapping appointments should not exceeded the allowed number of overlapping appointments</div>
                   <ul class='steps' id='scenario-1'>
                     <li class='step SetupState'>
                       <span>Given a patient has been defined</span>
                     </li>
                     <li class='step SetupState'>
                       <span>Given a doctor has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given patient set appointment before</span>
                     </li>
                     <li class='step Transition'>
                       <span>When I set appointment at specific time</span>
@@ -97,27 +100,13 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
                       <table class='examples' style='border-collapse: collapse;margin-left:10px''>
                         <tr>
                           <th></th>
+                          <th>number of overlapping appointments</th>
                           <th>doctor speciality</th>
-                          <th>weekly schedule</th>
-                          <th>appointment time</th>
-                          <th>appointment duration</th>
-                          <th>exception code</th>
                         </tr>
                         <tr>
                           <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>2</td>
                           <td>GeneralPractitioner</td>
-                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
-                          <td>12/10/2023 9:00:00 AM</td>
-                          <td>00:15:00</td>
-                          <td>BR-AP-102</td>
-                        </tr>
-                        <tr>
-                          <td><Span class='Passed' style='margin-right:4px;' /></td>
-                          <td>Specialist</td>
-                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
-                          <td>12/18/2023 1:00:00 PM</td>
-                          <td>00:10:00</td>
-                          <td>BR-AP-102</td>
                         </tr>
                       </table>
                     </li>
@@ -127,7 +116,7 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
             </div>
           </li>
         </ul>
-        <p><span>Tested at: 6/18/2023 1:40:17 PM</span></p>
+        <p><span>Tested at: 6/18/2023 6:08:58 PM</span></p>
       </div>
     </div>
     <div class='footer'>Powered by <a href='https://github.com/TestStack/TestStack.BDDfy'>BDDfy</a> framework</div>

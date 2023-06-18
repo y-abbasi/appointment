@@ -1,15 +1,11 @@
 using Appointment.Domain.Doctors;
+using DevArt.Core.ErrorHandling;
 
 namespace Appointment.Domain.Tests.Appointments;
 
-public class ShouldBeAbleToSetAppointmentProperly
+public class SetAppointmentShouldBeThrowException
 {
-    private AppointmentManager _appointmentManager;
-
-    public ShouldBeAbleToSetAppointmentProperly()
-    {
-        _appointmentManager = new();
-    }
+    private AppointmentManager _appointmentManager = new();
 
     void GivenAPatientHasBeenDefined()
     {
@@ -27,8 +23,8 @@ public class ShouldBeAbleToSetAppointmentProperly
         _appointmentManager.TryToSetAppointment(appointmentTime, appointmentDuration);
     }
 
-    void ThenRuleCreatedProperly(DateTime appointmentTime, TimeSpan appointmentDuration)
+    async Task ThenExceptionShouldBeThrown(string exceptionCode)
     {
-        _appointmentManager.AfterThat().AppointmentSetsProperly(appointmentTime, appointmentDuration);
+        await _appointmentManager.ExceptionWasThrow<BusinessException>(exceptionCode);
     }
 }
