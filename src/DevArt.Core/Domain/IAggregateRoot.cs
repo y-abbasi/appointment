@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using DevArt.Core.Domain.Constraints;
 
 namespace DevArt.Core.Domain;
 
@@ -15,5 +14,4 @@ public interface IAggregateRoot<TState, TKey> : IDo<object, TKey>, IAggregateRoo
 {
     TState AggregateState { get; }
     IDomainEvent<TKey> Process(IDomainEvent<TKey> @event);
-    ImmutableList<IConstraint> GetConstraints() => AggregateState.GetConstraints();
 }

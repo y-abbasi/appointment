@@ -29,13 +29,13 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
           <li class='scenarioSummary'>
             <div class='summaryLine'>
               <div class='summaryLabel'>Scenarios</div>
-              <span class='summaryCount'>1</span>
+              <span class='summaryCount'>2</span>
             </div>
           </li>
           <li class='Passed'>
             <div class='summaryLine'>
               <div class='summaryLabel'>Passed</div>
-              <span class='summaryCount'>0</span>
+              <span class='summaryCount'>2</span>
             </div>
           </li>
           <li class='Inconclusive'>
@@ -53,7 +53,7 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
           <li class='Failed'>
             <div class='summaryLine'>
               <div class='summaryLabel'>Failed</div>
-              <span class='summaryCount'>1</span>
+              <span class='summaryCount'>0</span>
             </div>
           </li>
         </ul>
@@ -68,7 +68,7 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
         </div>
         <ul class='testResult'>
           <li>
-            <div class='story Failed'>
+            <div class='story Passed'>
               <div class='storyMetadata'>
                 <div class='storyTitle'>Story: set appointment feature</div>
                 <ul class='storyNarrative'>
@@ -78,7 +78,7 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
               </div>
               <div class='scenarios'>
                 <div class='scenario'>
-                  <div class='Failed canToggle scenarioTitle' data-toggle-target='scenario-1'>The appointment time must be within the working hours of the clinic</div>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-1'>The appointment should be during doctors presents</div>
                   <ul class='steps' id='scenario-1'>
                     <li class='step SetupState'>
                       <span>Given a patient has been defined</span>
@@ -90,7 +90,7 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
                       <span>When I set appointment at specific time</span>
                     </li>
                     <li class='step Assertion'>
-                      <span>Then rule created properly</span>
+                      <span>Then exception should be thrown</span>
                     </li>
                     <li class='step'>
                       <span class='example-header'>Examples:</span>
@@ -101,53 +101,23 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
                           <th>weekly schedule</th>
                           <th>appointment time</th>
                           <th>appointment duration</th>
-                          <th>Error</th>
+                          <th>exception code</th>
                         </tr>
                         <tr>
-                          <td><Span class='Failed' style='margin-right:4px;' /></td>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
                           <td>GeneralPractitioner</td>
                           <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
-                          <td>12/10/2023 8:55:00 AM</td>
+                          <td>12/10/2023 9:00:00 AM</td>
+                          <td>00:15:00</td>
+                          <td>BR-AP-102</td>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>Specialist</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/18/2023 1:00:00 PM</td>
                           <td>00:10:00</td>
-                          <td>
-                            <span class='canToggle' data-toggle-target='step-2-5'>Expected property _raisedEvent.First().AggregateId.Date to be &lt;2023-12-10 08:55:00&gt;, but found &lt;2023-12-10&gt;.
-Expected property _raisedEvent.First().AggregateId.Value to be &quot;12/10/2023 8:55:00 AM-c27f87d1-9a88-474b-bbc3-e832d23d4c97&quot; with a length of 58, but &quot;12/10/2023 12:00:00 AM-c27f87d1-9a88-474b-bbc3-e832d23d4c97&quot; has a length of 59, differs near &quot;12:&quot; (index 11).
-Expected property _raisedEvent.First().AggregateId.PersistenceId to be &quot;Appointment-12/10/2023 8:55:00 AM-c27f87d1-9a88-474b-bbc3-e832d23d4c97&quot; with a length of 70, but &quot;Appointment-12/10/2023 12:00:00 AM-c27f87d1-9a88-474b-bbc3-e832d23d4c97&quot; has a length of 71, differs near &quot;12:&quot; (index 23).
-
-With configuration:
-- Use declared types and members
-- Compare enums by value
-- Compare tuples by their properties
-- Compare anonymous types by their properties
-- Compare records by their members
-- Include non-browsable members
-- Exclude member Version
-- Exclude member Publisher
-- Exclude member PublishedAt
-- Exclude member TenantId
-- Match member by name (or throw)
-- Be strict about the order of items in byte arrays
-- Without automatic conversion.
-</span>
-                            <div class='step' id='step-2-5'>
-                              <code>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
-   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
-   at FluentAssertions.Execution.CollectingAssertionStrategy.ThrowIfAny(IDictionary`2 context)
-   at FluentAssertions.Execution.AssertionScope.Dispose()
-   at FluentAssertions.Equivalency.EquivalencyValidator.AssertEquality(Comparands comparands, EquivalencyValidationContext context)
-   at FluentAssertions.Primitives.ObjectAssertions`2.BeEquivalentTo[TExpectation](TExpectation expectation, Func`2 config, String because, Object[] becauseArgs)
-   at Appointment.Domain.Tests.Appointments.AppointmentManager.AppointmentSetsProperly(DateTime appointmentTime, TimeSpan appointmentDuration) in /Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Domain.Tests/Appointments/AppointmentManager.cs:line 47
-   at Appointment.Domain.Tests.Appointments.ShouldBeAbleToSetAppointmentProperly.ThenRuleCreatedProperly(DateTime appointmentTime, TimeSpan appointmentDuration) in /Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Domain.Tests/Appointments/ShouldBeAbleToSetAppointmentProperly.cs:line 34
-   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
-   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
-   at TestStack.BDDfy.Processors.ExceptionProcessor.Process(Story story)
-   at TestStack.BDDfy.Engine.Run()
-   at TestStack.BDDfy.BDDfyExtensions.BDDfy[TStory](Object testObject, String scenarioTitle, String caller)
-   at Appointment.Domain.Tests.Appointments.SetAppointmentFeature.The_appointment_time_must_be_within_the_working_hours_of_the_clinic() in /Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Domain.Tests/Appointments/SetAppointmentFeature.cs:line 38
-   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
-   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)</code>
-                            </div>
-                          </td>
+                          <td>BR-AP-102</td>
                         </tr>
                       </table>
                     </li>
@@ -157,7 +127,7 @@ With configuration:
             </div>
           </li>
         </ul>
-        <p><span>Tested at: 6/18/2023 8:52:12 AM</span></p>
+        <p><span>Tested at: 6/18/2023 1:40:17 PM</span></p>
       </div>
     </div>
     <div class='footer'>Powered by <a href='https://github.com/TestStack/TestStack.BDDfy'>BDDfy</a> framework</div>

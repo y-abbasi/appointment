@@ -1,4 +1,3 @@
-using Appointment.specs.Features.Appointments.Abilities;
 using Appointment.specs.Features.Appointments.Models;
 using Appointment.specs.Features.Doctors.Models;
 using Appointment.specs.Features.Patients;

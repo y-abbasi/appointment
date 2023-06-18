@@ -2,8 +2,6 @@ using Akka.Actor;
 using Akka.Event;
 using Akka.Persistence;
 using DevArt.Core.Domain;
-using DevArt.Core.Domain.Constraints.ConstraintCheckers;
-using DevArt.Core.Domain.Constraints.ConstraintCheckers.UniqueConstraintChecker;
 using DevArt.Core.IdentityAccess;
 
 namespace DevArt.Core.Application;
@@ -16,26 +14,17 @@ public abstract class AggregateManager<TAgg, TState, TKey, TCommand> : ReceivePe
 {
     public override string PersistenceId { get; }
     private IMessage? _pinnedCommand = null;
-    private readonly IConstraintChecker _constraintChecker;
     protected ILoggingAdapter Logger { get; }
     protected string Name { get; }
 
-    protected AggregateManager(TAgg schemaId, IConstraintChecker constraintChecker)
+    protected AggregateManager(TAgg schemaId)
     {
         Logger = Context.GetLogger();
         Name = this.GetType().Name;
-        _constraintChecker = constraintChecker;
         SchemaId = schemaId;
         PersistenceId = schemaId.Id.PersistenceId;
         OnRecover();
         CommandAsync<TCommand>(Handle);
-        Command<CheckConstraintIsValid>(cmd =>
-        {
-            if (SchemaId.AggregateState.GetConstraints().Contains(cmd.Constraint))
-                Sender.Tell(SchemaId.AggregateState.GetConstraints().Contains(cmd.Constraint)
-                    ? new ConstraintIsValid()
-                    : new ConstraintIsNotValid());
-        });
     }
 
     private void OnRecover()
@@ -46,34 +35,20 @@ public abstract class AggregateManager<TAgg, TState, TKey, TCommand> : ReceivePe
 
     private async Task<bool> Handle(TCommand cmd)
     {
-        List<ITransaction> transactions = new();
-        var beforeApplyCommand = SchemaId.GetConstraints().ToList();
-
         var arg = MapToArg(cmd);
         if (arg == null) return false;
         var events = await SchemaId.Do(arg);
-        var afterApplyCommand = SchemaId.AggregateState.GetConstraints().ToList();
         try
         {
-            foreach (var constraint in beforeApplyCommand.Except(afterApplyCommand))
-                transactions.Add(await _constraintChecker.BeginReleaseAsync(constraint));
-            foreach (var constraint in afterApplyCommand.Except(beforeApplyCommand))
-                transactions.Add(await _constraintChecker.CheckAsync(constraint));
             PersistAllAsync(events, evt =>
             {
-                Context.System.EventStream.Publish(new EventMessage(PersistenceId, evt, 0, evt.Version, evt.PublishedAt.Ticks));
-                foreach (var transaction in transactions)
-                    transaction.Commit().GetAwaiter().GetResult();
+                Context.System.EventStream.Publish(new EventMessage(PersistenceId, evt, 0, evt.Version,
+                    evt.PublishedAt.Ticks));
                 Sender.Tell(true);
             });
         }
         catch (Exception e)
         {
-            foreach (var transaction in transactions)
-            {
-                await transaction.Rollback();
-            }
-
             Sender.Tell(e);
             throw;
         }

@@ -1,12 +1,9 @@
-using System.Configuration;
-using System.Reflection;
 using Akka.Actor;
 using Akka.Persistence.EventStore;
 using DevArt.Core.Akka;
 using DevArt.Core.Application;
 using DevArt.Core.DataAccess;
 using DevArt.Core.DataAccess.MongoDb;
-using DevArt.Core.Domain.Constraints.ConstraintCheckers;
 using EventStore.ClientAPI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +19,6 @@ public static class ServiceCollectionExtension
 {
     public static void WireUpDevArtCore(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddSingleton<IConstraintChecker, ConstraintChecker>();
         services.AddSingleton<ICommandDispatcher, ShardCommandDispatcher>();
         services.AddSingleton(new ShardCollection());
         services.AddSingleton(typeof(ActorRefProvider<>));

@@ -1,4 +1,3 @@
-using Akkatecture.Aggregates;
 using DevArt.Core.IdentityAccess;
 using Newtonsoft.Json;
 

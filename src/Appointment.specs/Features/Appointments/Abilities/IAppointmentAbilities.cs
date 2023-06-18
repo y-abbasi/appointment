@@ -1,5 +1,4 @@
 using Appointment.specs.Features.Appointments.Models;
-using Appointment.specs.Features.Appointments.Questions;
 using Suzianna.Core.Screenplay;
 using Suzianna.Core.Screenplay.Questions;
 

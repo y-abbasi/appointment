@@ -1,5 +1,4 @@
 using System.Linq.Expressions;
-using DevArt.Core.Domain;
 
 namespace DevArt.Core.DataAccess;
 
