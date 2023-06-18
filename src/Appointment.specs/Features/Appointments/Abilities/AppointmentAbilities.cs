@@ -10,7 +10,7 @@ public class AppointmentAbilities : IAppointmentAbilities
 {
     public IPerformable SetAppointment(SetAppointmentCommand command)
     {
-        return Post.DataAsJson(command).To($"api/appointments");
+        return Post.DataAsJson(command).To($"appointments");
     }
 
     public IQuestion<AppointmentResponse> GetLastCreatedAppointment()

@@ -35,8 +35,8 @@ public static class ServiceCollectionExtension
 
 
         var moduleNames = configuration.GetSection("Modules").Get<ModuleSettings>();
-
-        foreach (var type in moduleNames?.ModuleTypes.Select(Type.GetType)?? Type.EmptyTypes)
+        if (moduleNames?.ModuleTypes == null) return;
+        foreach (var type in moduleNames.ModuleTypes.Select(Type.GetType))
         {
             var module = Activator.CreateInstance(type) as IModule;
             module?.Register(services);

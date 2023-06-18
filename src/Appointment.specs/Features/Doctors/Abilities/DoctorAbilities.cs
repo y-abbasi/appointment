@@ -8,6 +8,6 @@ public class DoctorAbilities : IDoctorAbilities
 {
     public IPerformable DefineDoctor(DefineDoctor command)
     {
-        return Post.DataAsJson(command).To($"api/doctors");
+        return Post.DataAsJson(command).To($"doctors");
     }
 }

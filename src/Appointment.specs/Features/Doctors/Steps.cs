@@ -1,6 +1,7 @@
 using Appointment.specs.Features.Doctors.Abilities;
 using Suzianna.Core.Screenplay;
 using Suzianna.Core.Screenplay.Actors;
+using Suzianna.Rest.Screenplay.Questions;
 
 namespace Appointment.specs.Features.Doctors;
 
@@ -38,9 +39,10 @@ public class Steps
     }
 
     [Given(@"I have registered the doctor '(.*)'")]
-    public void GivenIHaveRegisteredTheDoctor(string smith)
+    public void GivenIHaveRegisteredTheDoctor(string doctor)
     {
         var builder = _actor.Recall<DoctorBuilder>("doctor-builder");
         _actor.AttemptsTo(_doctorAbilities.DefineDoctor(builder.Build()));
+        _actor.Remember(doctor, _actor.AsksFor(LastResponse.Raw()).Content.ReadAsStringAsync().Result);
     }
 }

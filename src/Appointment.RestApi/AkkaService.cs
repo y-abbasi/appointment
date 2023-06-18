@@ -4,7 +4,9 @@ using Akka.Cluster;
 using Akka.Configuration;
 using Akka.DependencyInjection;
 using Appointment.Application.Appointments;
+using Appointment.Application.Doctors;
 using Appointment.Domain.Appointments;
+using Appointment.Domain.Doctors;
 using DevArt.Core.Akka.Clustering;
 using DevArt.Core.Akka.Clustering.Configuration;
 using DevArt.Core.Config;
@@ -43,6 +45,9 @@ public class AkkaService : IHostedService
         {
             _shardActorRefs[typeof(AppointmentAggregateActor)] =
                 ClusterFactory<AppointmentAggregateActor, Domain.Appointments.Appointment, AppointmentId, IAppointmentCommand>
+                    .StartClusteredAggregate(ActorSystem);
+            _shardActorRefs[typeof(DoctorAggregateActor)] =
+                ClusterFactory<DoctorAggregateActor, Doctor, DoctorId, IDoctorCommand>
                     .StartClusteredAggregate(ActorSystem);
         });
         ActorSystem.WhenTerminated.ContinueWith(tr => { _lifetime.StopApplication(); }, cancellationToken);

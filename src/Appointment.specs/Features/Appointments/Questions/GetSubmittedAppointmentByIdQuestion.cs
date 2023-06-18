@@ -8,16 +8,16 @@ namespace Appointment.specs.Features.Appointments.Questions;
 
 internal class GetSubmittedAppointmentByIdQuestion: IQuestion<AppointmentResponse>
 {
-    private readonly Guid _id;
+    private readonly string _id;
 
-    public GetSubmittedAppointmentByIdQuestion(Guid id)
+    public GetSubmittedAppointmentByIdQuestion(string id)
     {
         _id = id;
     }
 
     public AppointmentResponse AnsweredBy(Actor actor)
     {
-        Get.ResourceAt($"api/appointment/{_id}")
+        Get.ResourceAt($"appointment/{_id}")
             .PerformAs(actor);
         return LastResponse.Content<AppointmentResponse>().AnsweredBy(actor);
 

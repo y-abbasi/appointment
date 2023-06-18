@@ -37,7 +37,7 @@ internal class AppointmentManager
     {
         _doctor = new Doctor(DoctorId.New());
         _doctor.Process(new DoctorDefinedEvent(_doctor.Id, doctorSpeciality, weeklySchedule, 1));
-        _doctorService.GetById(_doctor.Id).Returns(Task.FromResult(_doctor));
+        _doctorService.GetById(_doctor.Id).Returns(Task.FromResult(_doctor.AggregateState));
     }
 
 

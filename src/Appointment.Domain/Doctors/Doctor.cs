@@ -20,4 +20,12 @@ public class Doctor : AggregateRoot<IDoctorState, DoctorId>, IDoctor
         dynamic msg = arg;
         return Do(msg);
     }
+
+    public Task<IEnumerable<IDomainEvent<DoctorId>>> Do(DefineDoctorArg arg)
+    {
+        return Task.FromResult<IEnumerable<IDomainEvent<DoctorId>>>(new IDomainEvent<DoctorId>[]
+        {
+            Process(new DoctorDefinedEvent(Id, arg.DoctorSpeciality, arg.WeeklySchedule, 1))
+        });
+    }
 }

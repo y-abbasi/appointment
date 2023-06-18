@@ -11,12 +11,12 @@ Link to a feature: [Calculator]($projectname$/Features/SetAppointment.feature)
           | Name  | DoctorSpeciality   |
           | Smith | <DoctorSpeciality> |
         And With the following weekly schedule
-          | DayOfWeek | Times        |
-          | Sun       | 10-12, 15-19 |
-          | Wen       | 10-12, 15-19 |
+          | DayOfWeek | DaySchedules                         |
+          | Sunday    | 10:00:00-12:00:00, 15:00:00-19:00:00 |
+          | Wednesday | 10:00:00-12:00:00, 15:00:00-19:00:00 |
         And I have registered the doctor 'Smith'
         When I set appointment with the following properties
-          | Pateint | Doctor | AppointmentTime   | AppointmentDuration   |
+          | Patient | Doctor | AppointmentTime   | AppointmentDuration   |
           | John    | Smith  | <AppointmentTime> | <AppointmentDuration> |
         Then I can find an appointment with above info
 

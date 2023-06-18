@@ -54,16 +54,16 @@ public partial class Appointment : AggregateRoot<IAppointmentState, AppointmentI
         throw new BusinessException(AppointmentExceptionCodes.MustBeWithinWorkingHourOfClinic, "");
     }
 
-    private void GuardAgainstAppointmentDurationNotAppropriateToTheDoctorSpeciality(IDoctor doctor,
+    private void GuardAgainstAppointmentDurationNotAppropriateToTheDoctorSpeciality(IDoctorState doctor,
         TimeSpan duration)
     {
-        if (doctor.AggregateState.DurationConstraint.Contains(duration)) return;
+        if (doctor.DurationConstraint.Contains(duration)) return;
         throw new BusinessException(AppointmentExceptionCodes.MustBeAppropriateToTheDoctorSpeciality, "");
     }
 
-    private void GuardAgainstAppointmentTimeDuringDoctorNotPresents(IDoctor doctor, DateTime appointmentTime)
+    private void GuardAgainstAppointmentTimeDuringDoctorNotPresents(IDoctorState doctor, DateTime appointmentTime)
     {
-        WeeklySchedule weeklySchedule = doctor.AggregateState.WeeklySchedule;
+        WeeklySchedule weeklySchedule = doctor.WeeklySchedule;
         if (weeklySchedule.AcceptAppointmentTime(appointmentTime)) return;
         throw new BusinessException(AppointmentExceptionCodes.MustBeADuringTheDoctorsPresents, "");
     }
@@ -82,12 +82,12 @@ public partial class Appointment : AggregateRoot<IAppointmentState, AppointmentI
         throw new BusinessException(AppointmentExceptionCodes.AppointmentsOfPatientShouldNotOverlap, "");
     }
 
-    private void GuardAgainstInvalidOverlappingAppointment(IDoctor doctor, DateTime appointmentTime,
+    private void GuardAgainstInvalidOverlappingAppointment(IDoctorState doctor, DateTime appointmentTime,
         TimeSpan appointmentDuration)
     {
         if (AggregateState.Appointments.HasNotOverlapWith(appointmentTime, appointmentDuration)) return;
         if (AggregateState.NumberOfOverlappingAppointment <
-            doctor.AggregateState.NumberOfAllowedOverlappingAppointment) return;
+            doctor.NumberOfAllowedOverlappingAppointment) return;
         throw new BusinessException(
             AppointmentExceptionCodes
                 .TheNumberOfDoctorsOverlappingAppointmentsShouldNotExceededTheAllowedNumberOfOverlappingAppointments,

@@ -2,10 +2,12 @@ using DevArt.Core.Domain;
 
 namespace Appointment.Domain.Doctors;
 
-public interface IDoctor : IAggregateRoot<IDoctorState, DoctorId>
+public interface IDoctor : IAggregateRoot<IDoctorState, DoctorId>,
+    IDo<DefineDoctorArg, DoctorId>
 {
 }
 
+public record DefineDoctorArg(DoctorSpeciality DoctorSpeciality, WeeklySchedule WeeklySchedule);
 public record DoctorDefinedEvent(DoctorId AggregateId, DoctorSpeciality DoctorSpeciality, WeeklySchedule WeeklySchedule,
     long Version) : DomainEvent<DoctorId>(AggregateId, "Doctor", Version);
 
@@ -24,5 +26,5 @@ public enum DoctorSpeciality
 
 public interface IDoctorService
 {
-    Task<IDoctor> GetById(DoctorId doctorId);
+    Task<IDoctorState> GetById(DoctorId doctorId);
 }

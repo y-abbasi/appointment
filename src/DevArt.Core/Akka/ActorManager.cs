@@ -22,10 +22,10 @@ public class ActorManager<TAggregateMgr, TAggregate, TIdentity, TCommand> : Rece
         Name = GetType().PrettyPrint();
         Receive<Terminated>(Terminate);
 
-        Receive<TCommand>(Dispatch);
+        Receive<ICommand<TIdentity>>(Dispatch);
     }
 
-    protected virtual bool Dispatch(TCommand command)
+    protected virtual bool Dispatch(ICommand<TIdentity> command)
     {
         Logger.Info("AggregateManager of Type={0}; has received a command of Type={1}", Name,
             command.GetType().PrettyPrint());

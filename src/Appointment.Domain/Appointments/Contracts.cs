@@ -24,7 +24,7 @@ public record SetAppointmentArg(PatientId PatientId, DateTime AppointmentTime, T
 
 public record AppointmentId(DateOnly Date, DoctorId DoctorId) : IIdentifier
 {
-    public string Value => $"{Date}-{DoctorId.Value}";
+    public string Value => $"{Date:yyyyMMdd}-{DoctorId.Value}";
     public string PersistenceId => $"Appointment-{Value}";
 }
 

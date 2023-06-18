@@ -20,9 +20,10 @@ public class AppointmentTransformer
     public SetAppointmentCommand ToDefineCommand(Table table)
     {
         var model = table.CreateInstance<AppointmentModel>();
-        return new(_actor.Recall<PatientModel>(model.Patient).Id,
-            _actor.Recall<DoctorModel>(model.Doctor).Id,
+        return new(
+            _actor.Recall<string>(model.Doctor),
+            _actor.Recall<PatientModel>(model.Patient).Id,
             model.AppointmentTime,
-            TimeSpan.FromMinutes(model.AppointmentDuration));
+            model.AppointmentDuration);
     }
 }

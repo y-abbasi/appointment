@@ -8,7 +8,7 @@ public class TimeRangesRetriever : IValueRetriever
 {
     public bool CanRetrieve(KeyValuePair<string, string> keyValuePair, Type targetType, Type propertyType)
     {
-        return propertyType.IsAssignableTo(typeof(Range<TimeOnly>[]));
+        return propertyType.IsAssignableTo(typeof(Range<string>[]));
     }
 
     public object Retrieve(KeyValuePair<string, string> keyValuePair, Type targetType, Type propertyType)
@@ -17,7 +17,7 @@ public class TimeRangesRetriever : IValueRetriever
 
         return value.Split(',')
             .Select(rangeStr => rangeStr.Split('-'))
-            .Select(range => new Range<TimeOnly>(TimeOnly.Parse(range[0]), TimeOnly.Parse(range[1])))
+            .Select(range => new Range<string>(range[0].Trim(), range[1].Trim()))
             .ToArray();
     }
 }

@@ -10,7 +10,6 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-TheRules.Gateways.WebApi-22805B50-DABA-4F12-BA4D-A99E1EF527C0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Appointment.RestApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

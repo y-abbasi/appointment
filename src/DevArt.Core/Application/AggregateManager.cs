@@ -17,12 +17,12 @@ public abstract class AggregateManager<TAgg, TState, TKey, TCommand> : ReceivePe
     protected ILoggingAdapter Logger { get; }
     protected string Name { get; }
 
-    protected AggregateManager(TAgg schemaId)
+    protected AggregateManager(TAgg aggregate)
     {
         Logger = Context.GetLogger();
         Name = this.GetType().Name;
-        SchemaId = schemaId;
-        PersistenceId = schemaId.Id.PersistenceId;
+        Aggregate = aggregate;
+        PersistenceId = aggregate.Id.PersistenceId;
         OnRecover();
         CommandAsync<TCommand>(Handle);
     }
@@ -30,16 +30,16 @@ public abstract class AggregateManager<TAgg, TState, TKey, TCommand> : ReceivePe
     private void OnRecover()
     {
         Recover<RecoveryCompleted>(completed => { });
-        RecoverAny(evt => { SchemaId.Process((IDomainEvent<TKey>)evt); });
+        RecoverAny(evt => { Aggregate.Process((IDomainEvent<TKey>)evt); });
     }
 
     private async Task<bool> Handle(TCommand cmd)
     {
         var arg = MapToArg(cmd);
         if (arg == null) return false;
-        var events = await SchemaId.Do(arg);
         try
         {
+            var events = await Aggregate.Do(arg);
             PersistAllAsync(events, evt =>
             {
                 Context.System.EventStream.Publish(new EventMessage(PersistenceId, evt, 0, evt.Version,
@@ -58,7 +58,7 @@ public abstract class AggregateManager<TAgg, TState, TKey, TCommand> : ReceivePe
 
     protected abstract object? MapToArg(TCommand cmd);
 
-    protected TAgg SchemaId { get; }
+    protected TAgg Aggregate { get; }
 
     protected override bool AroundReceive(Receive receive, object message)
     {

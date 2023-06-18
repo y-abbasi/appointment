@@ -10,4 +10,9 @@
       <ProjectReference Include="..\Appointment.Domain\Appointment.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="EventStore.Client" Version="22.0.0" />
+        <PackageReference Include="EventStore.Client.Grpc" Version="23.0.0" />
+    </ItemGroup>
+
 </Project>

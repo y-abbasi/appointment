@@ -130,13 +130,13 @@ namespace Appointment.specs.Features.Appointments
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "DayOfWeek",
-                            "Times"});
+                            "DaySchedules"});
                 table3.AddRow(new string[] {
-                            "Sun",
-                            "10-12, 15-19"});
+                            "Sunday",
+                            "10:00:00-12:00:00, 15:00:00-19:00:00"});
                 table3.AddRow(new string[] {
-                            "Wen",
-                            "10-12, 15-19"});
+                            "Wednesday",
+                            "10:00:00-12:00:00, 15:00:00-19:00:00"});
 #line 13
         testRunner.And("With the following weekly schedule", ((string)(null)), table3, "And ");
 #line hidden
@@ -144,7 +144,7 @@ namespace Appointment.specs.Features.Appointments
         testRunner.And("I have registered the doctor \'Smith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Pateint",
+                            "Patient",
                             "Doctor",
                             "AppointmentTime",
                             "AppointmentDuration"});

@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suzianna.Reporting", "Suzia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suzianna.Rest", "Suzianna.Rest\Suzianna.Rest.csproj", "{3FB507F9-F300-4BC3-98DC-10839C6E35D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.RestApi", "Appointment.RestApi\Appointment.RestApi.csproj", "{B37E7CF4-EC42-4D96-8710-42FABBD24804}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.Application", "Appointment.Application\Appointment.Application.csproj", "{14D89878-1C25-4D88-8EEF-7E49F66E2AAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{87B6A5EE-A71E-45B6-8703-686C69AE29BE}"
@@ -21,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.Domain", "Appointment.Domain\Appointment.Domain.csproj", "{426B5D1C-D6D6-4DD6-9A5D-73CB5CA61A26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.Domain.Tests", "Appointment.Domain.Tests\Appointment.Domain.Tests.csproj", "{A79EDE4A-4AEB-492B-9C9E-35233DF0C53E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointment.RestApi", "Appointment.RestApi\Appointment.RestApi.csproj", "{470E9602-C512-4198-B249-99EDCE7AA89C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,10 +44,6 @@ Global
 		{3FB507F9-F300-4BC3-98DC-10839C6E35D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FB507F9-F300-4BC3-98DC-10839C6E35D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FB507F9-F300-4BC3-98DC-10839C6E35D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B37E7CF4-EC42-4D96-8710-42FABBD24804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B37E7CF4-EC42-4D96-8710-42FABBD24804}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B37E7CF4-EC42-4D96-8710-42FABBD24804}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B37E7CF4-EC42-4D96-8710-42FABBD24804}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14D89878-1C25-4D88-8EEF-7E49F66E2AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14D89878-1C25-4D88-8EEF-7E49F66E2AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D89878-1C25-4D88-8EEF-7E49F66E2AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,6 +60,10 @@ Global
 		{A79EDE4A-4AEB-492B-9C9E-35233DF0C53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A79EDE4A-4AEB-492B-9C9E-35233DF0C53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A79EDE4A-4AEB-492B-9C9E-35233DF0C53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{470E9602-C512-4198-B249-99EDCE7AA89C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470E9602-C512-4198-B249-99EDCE7AA89C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470E9602-C512-4198-B249-99EDCE7AA89C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470E9602-C512-4198-B249-99EDCE7AA89C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{53D36A39-940F-434B-8F03-BB495E2FB2E6} = {4136553E-8A79-4983-BE09-E2F5D8D6D424}

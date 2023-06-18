@@ -4,21 +4,20 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UserSecretsId>aspnet-TheRules.Gateways.WebApi-22805B50-DABA-4F12-BA4D-A99E1EF527C0</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Akka" Version="1.5.7" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.5" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
-        <PackageReference Include="Microsoft.Identity.Web" Version="2.11.0" />
+        <PackageReference Include="DateOnlyTimeOnly.AspNet" Version="2.1.1" />
+        <PackageReference Include="DateOnlyTimeOnly.AspNet.Swashbuckle" Version="2.1.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+        <ProjectReference Include="..\Appointment.Application\Appointment.Application.csproj" />
+      <ProjectReference Include="..\Appointment.Domain\Appointment.Domain.csproj" />
+      <ProjectReference Include="..\DevArt.Core\DevArt.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Appointment.Application\Appointment.Application.csproj" />
-      <ProjectReference Include="..\DevArt.Core\DevArt.Core.csproj" />
+      <PackageReference Include="Akka" Version="1.5.7" />
     </ItemGroup>
+
 </Project>

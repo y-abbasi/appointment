@@ -9,7 +9,7 @@ internal class GetLastSubmittedAppointmentQuestion : IQuestion<AppointmentRespon
 {
     public AppointmentResponse AnsweredBy(Actor actor)
     {
-        var id = actor.AsksFor(LastResponse.Content<Guid>());
+        var id = actor.AsksFor(LastResponse.Raw()).Content.ReadAsStringAsync().Result;
         return new GetSubmittedAppointmentByIdQuestion(id).AnsweredBy(actor);
     }
 }

@@ -10,3 +10,10 @@
 /Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/obj/Debug/net7.0/refint/Appointment.Application.dll
 /Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/obj/Debug/net7.0/Appointment.Application.pdb
 /Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/obj/Debug/net7.0/ref/Appointment.Application.dll
+/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/bin/Debug/net7.0/Appointment.Domain.dll
+/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/bin/Debug/net7.0/DevArt.Core.dll
+/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Binder.dll
+/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/bin/Debug/net7.0/Appointment.Domain.pdb
+/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/bin/Debug/net7.0/DevArt.Core.pdb
+/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/obj/Debug/net7.0/Appointment.Application.csproj.CopyComplete

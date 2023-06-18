@@ -41,6 +41,16 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "EventStore.Client": {
+              "target": "Package",
+              "version": "[22.0.0, )"
+            },
+            "EventStore.Client.Grpc": {
+              "target": "Package",
+              "version": "[23.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -143,6 +153,9 @@
               "/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/Appointment.Application.csproj": {
                 "projectPath": "/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Application/Appointment.Application.csproj"
               },
+              "/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Domain/Appointment.Domain.csproj": {
+                "projectPath": "/Users/dev-art/RiderProjects/appointment-engine/src/Appointment.Domain/Appointment.Domain.csproj"
+              },
               "/Users/dev-art/RiderProjects/appointment-engine/src/DevArt.Core/DevArt.Core.csproj": {
                 "projectPath": "/Users/dev-art/RiderProjects/appointment-engine/src/DevArt.Core/DevArt.Core.csproj"
               }
@@ -163,21 +176,13 @@
               "target": "Package",
               "version": "[1.5.7, )"
             },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "DateOnlyTimeOnly.AspNet": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
+            "DateOnlyTimeOnly.AspNet.Swashbuckle": {
               "target": "Package",
-              "version": "[7.0.5, )"
-            },
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[7.0.5, )"
-            },
-            "Microsoft.Identity.Web": {
-              "target": "Package",
-              "version": "[2.11.0, )"
+              "version": "[2.1.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
