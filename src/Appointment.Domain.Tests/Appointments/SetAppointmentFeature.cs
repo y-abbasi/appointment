@@ -180,6 +180,10 @@ public class SetAppointmentFeature
                         2,
                         DoctorSpeciality.GeneralPractitioner
                     },
+                    {
+                        3,
+                        DoctorSpeciality.Specialist
+                    },
                 }
             ).BDDfy<SetAppointmentFeature>();
     }

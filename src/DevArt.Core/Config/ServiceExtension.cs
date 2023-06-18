@@ -2,8 +2,6 @@ using Akka.Actor;
 using Akka.Persistence.EventStore;
 using DevArt.Core.Akka;
 using DevArt.Core.Application;
-using DevArt.Core.DataAccess;
-using DevArt.Core.DataAccess.MongoDb;
 using EventStore.ClientAPI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,13 +20,7 @@ public static class ServiceCollectionExtension
         services.AddSingleton<ICommandDispatcher, ShardCommandDispatcher>();
         services.AddSingleton(new ShardCollection());
         services.AddSingleton(typeof(ActorRefProvider<>));
-
-        services.AddSingleton<IMongoDatabase>(sp =>
-        {
-            var mongoConnectionString = configuration.GetSection("MONGO_CONNECTION_STR").Value?.Trim();
-            var client = new MongoClient(mongoConnectionString);
-            return client.GetDatabase("rules");
-        });
+        
         services.AddSingleton<IEventStoreConnection>(provider =>
         {
             var settings = EventStorePersistence.Get(provider.GetRequiredService<ActorSystem>()).JournalSettings;
@@ -41,11 +33,10 @@ public static class ServiceCollectionExtension
             return connection;
         });
 
-        services.AddTransient(typeof(IMongoDbRepository<>), typeof(MongoDbRepository<>));
 
         var moduleNames = configuration.GetSection("Modules").Get<ModuleSettings>();
 
-        foreach (var type in moduleNames.ModuleTypes.Select(Type.GetType))
+        foreach (var type in moduleNames?.ModuleTypes.Select(Type.GetType)?? Type.EmptyTypes)
         {
             var module = Activator.CreateInstance(type) as IModule;
             module?.Register(services);
