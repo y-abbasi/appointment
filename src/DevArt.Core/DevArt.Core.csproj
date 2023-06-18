@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Akka.DependencyInjection" Version="1.5.7" />
+        <PackageReference Include="Akka.Persistence" Version="1.5.7" />
+        <PackageReference Include="Akka.Cluster.Sharding" Version="1.5.7" />
+        <PackageReference Include="Akka.Persistence.EventStore.Query" Version="1.4.0-beta49" />
+        <PackageReference Include="EventStore.Client" Version="22.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="MongoDB.Driver" Version="2.15.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Akka\Clustering\Configuration\default.conf" />
+        <EmbeddedResource Include="Akka\Clustering\Configuration\default.conf" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+            <HintPath>..\..\..\..\..\..\usr\local\share\dotnet\x64\shared\Microsoft.AspNetCore.App\7.0.4\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Configuration.Binder">
+            <HintPath>..\..\..\..\..\..\usr\local\share\dotnet\x64\shared\Microsoft.AspNetCore.App\7.0.4\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>
