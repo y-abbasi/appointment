@@ -163,14 +163,18 @@ namespace Appointment.specs.Features.Appointments
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Appointment duration should be appropriate to the doctor speciality")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Appointment time should be within working hours of clinic")]
         [Xunit.TraitAttribute("FeatureTitle", "SetAppointment")]
-        [Xunit.TraitAttribute("Description", "Appointment duration should be appropriate to the doctor speciality")]
-        public void AppointmentDurationShouldBeAppropriateToTheDoctorSpeciality()
+        [Xunit.TraitAttribute("Description", "Appointment time should be within working hours of clinic")]
+        [Xunit.InlineDataAttribute("2023-12-10 08:59", "GeneralPractitioner", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-13 19:01", "Specialist", new string[0])]
+        public void AppointmentTimeShouldBeWithinWorkingHoursOfClinic(string appointmentTime, string doctorSpeciality, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appointment duration should be appropriate to the doctor speciality", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("AppointmentTime", appointmentTime);
+            argumentsOfScenario.Add("DoctorSpeciality", doctorSpeciality);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appointment time should be within working hours of clinic", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 36
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -193,7 +197,7 @@ namespace Appointment.specs.Features.Appointments
                             "DoctorSpeciality"});
                 table6.AddRow(new string[] {
                             "Smith",
-                            "<DoctorSpeciality>"});
+                            string.Format("{0}", doctorSpeciality)});
 #line 40
         testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table6, "And ");
 #line hidden
@@ -220,12 +224,88 @@ namespace Appointment.specs.Features.Appointments
                 table8.AddRow(new string[] {
                             "John",
                             "Smith",
-                            "<AppointmentTime>",
-                            "<AppointmentDuration>"});
+                            string.Format("{0}", appointmentTime),
+                            "10"});
 #line 48
         testRunner.When("I set appointment with the following properties", ((string)(null)), table8, "When ");
 #line hidden
 #line 51
+        testRunner.Then("Exception with the code \'BR-AP-100\' should be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Appointment duration should be appropriate to the doctor speciality")]
+        [Xunit.TraitAttribute("FeatureTitle", "SetAppointment")]
+        [Xunit.TraitAttribute("Description", "Appointment duration should be appropriate to the doctor speciality")]
+        [Xunit.InlineDataAttribute("2023-12-10 10:00", "4", "GeneralPractitioner", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-13 10:00", "16", "GeneralPractitioner", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-10 10:00", "9", "Specialist", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-13 10:00", "31", "Specialist", new string[0])]
+        public void AppointmentDurationShouldBeAppropriateToTheDoctorSpeciality(string appointmentTime, string appointmentDuration, string doctorSpeciality, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("AppointmentTime", appointmentTime);
+            argumentsOfScenario.Add("AppointmentDuration", appointmentDuration);
+            argumentsOfScenario.Add("DoctorSpeciality", doctorSpeciality);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appointment duration should be appropriate to the doctor speciality", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 58
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table9.AddRow(new string[] {
+                            "John"});
+#line 59
+        testRunner.Given("There is a registered patient with the following properties", ((string)(null)), table9, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "DoctorSpeciality"});
+                table10.AddRow(new string[] {
+                            "Smith",
+                            string.Format("{0}", doctorSpeciality)});
+#line 62
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table10, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "DayOfWeek",
+                            "DaySchedules"});
+                table11.AddRow(new string[] {
+                            "Sunday",
+                            "10:00:00-12:00:00, 15:00:00-19:00:00"});
+                table11.AddRow(new string[] {
+                            "Wednesday",
+                            "10:00:00-12:00:00, 15:00:00-19:00:00"});
+#line 65
+        testRunner.And("With the following weekly schedule", ((string)(null)), table11, "And ");
+#line hidden
+#line 69
+        testRunner.And("I have registered the doctor \'Smith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Patient",
+                            "Doctor",
+                            "AppointmentTime",
+                            "AppointmentDuration"});
+                table12.AddRow(new string[] {
+                            "John",
+                            "Smith",
+                            string.Format("{0}", appointmentTime),
+                            string.Format("{0}", appointmentDuration)});
+#line 70
+        testRunner.When("I set appointment with the following properties", ((string)(null)), table12, "When ");
+#line hidden
+#line 73
         testRunner.Then("Exception with the code \'BR-AP-101\' should be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -247,7 +327,7 @@ namespace Appointment.specs.Features.Appointments
             argumentsOfScenario.Add("AppointmentDuration", appointmentDuration);
             argumentsOfScenario.Add("DoctorSpeciality", doctorSpeciality);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Appointment time should be during the doctor`s presents", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 53
+#line 82
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -257,52 +337,298 @@ namespace Appointment.specs.Features.Appointments
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name"});
-                table9.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "John"});
-#line 54
-        testRunner.Given("There is a registered patient with the following properties", ((string)(null)), table9, "Given ");
+#line 83
+        testRunner.Given("There is a registered patient with the following properties", ((string)(null)), table13, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "DoctorSpeciality"});
-                table10.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "Smith",
                             string.Format("{0}", doctorSpeciality)});
-#line 57
-        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table10, "And ");
+#line 86
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table14, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                             "DayOfWeek",
                             "DaySchedules"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Sunday",
                             "10:00:00-12:00:00, 15:00:00-18:00:00"});
-                table11.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Wednesday",
                             "10:00:00-12:00:00, 15:00:00-18:00:00"});
-#line 60
-        testRunner.And("With the following weekly schedule", ((string)(null)), table11, "And ");
+#line 89
+        testRunner.And("With the following weekly schedule", ((string)(null)), table15, "And ");
 #line hidden
-#line 64
+#line 93
         testRunner.And("I have registered the doctor \'Smith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "Patient",
                             "Doctor",
                             "AppointmentTime",
                             "AppointmentDuration"});
-                table12.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "John",
                             "Smith",
                             string.Format("{0}", appointmentTime),
                             string.Format("{0}", appointmentDuration)});
-#line 65
-        testRunner.When("I set appointment with the following properties", ((string)(null)), table12, "When ");
+#line 94
+        testRunner.When("I set appointment with the following properties", ((string)(null)), table16, "When ");
 #line hidden
-#line 68
+#line 97
         testRunner.Then("Exception with the code \'BR-AP-102\' should be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Patient`s appointment in one day should be less than two")]
+        [Xunit.TraitAttribute("FeatureTitle", "SetAppointment")]
+        [Xunit.TraitAttribute("Description", "Patient`s appointment in one day should be less than two")]
+        [Xunit.InlineDataAttribute("2023-12-10 10:00", "2023-12-10 10:30", "2023-12-10 11:00", "10", "GeneralPractitioner", new string[0])]
+        public void PatientSAppointmentInOneDayShouldBeLessThanTwo(string firstAppointmentTime, string secondAppointmentTime, string thirdAppointmentTime, string appointmentDuration, string doctorSpeciality, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("FirstAppointmentTime", firstAppointmentTime);
+            argumentsOfScenario.Add("SecondAppointmentTime", secondAppointmentTime);
+            argumentsOfScenario.Add("ThirdAppointmentTime", thirdAppointmentTime);
+            argumentsOfScenario.Add("AppointmentDuration", appointmentDuration);
+            argumentsOfScenario.Add("DoctorSpeciality", doctorSpeciality);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Patient`s appointment in one day should be less than two", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 106
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table17.AddRow(new string[] {
+                            "John"});
+#line 107
+        testRunner.Given("There is a registered patient with the following properties", ((string)(null)), table17, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "DoctorSpeciality"});
+                table18.AddRow(new string[] {
+                            "Smith",
+                            string.Format("{0}", doctorSpeciality)});
+#line 110
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table18, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                            "DayOfWeek",
+                            "DaySchedules"});
+                table19.AddRow(new string[] {
+                            "Sunday",
+                            "10:00:00-12:00:00, 15:00:00-18:00:00"});
+#line 113
+        testRunner.And("With the following weekly schedule", ((string)(null)), table19, "And ");
+#line hidden
+#line 116
+        testRunner.And("I have registered the doctor \'Smith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "DoctorSpeciality"});
+                table20.AddRow(new string[] {
+                            "Mary",
+                            string.Format("{0}", doctorSpeciality)});
+#line 117
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table20, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                            "DayOfWeek",
+                            "DaySchedules"});
+                table21.AddRow(new string[] {
+                            "Sunday",
+                            "10:00:00-12:00:00, 15:00:00-18:00:00"});
+#line 120
+        testRunner.And("With the following weekly schedule", ((string)(null)), table21, "And ");
+#line hidden
+#line 123
+        testRunner.And("I have registered the doctor \'Mary\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "DoctorSpeciality"});
+                table22.AddRow(new string[] {
+                            "Sam",
+                            string.Format("{0}", doctorSpeciality)});
+#line 124
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table22, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+                            "DayOfWeek",
+                            "DaySchedules"});
+                table23.AddRow(new string[] {
+                            "Sunday",
+                            "10:00:00-12:00:00, 15:00:00-18:00:00"});
+#line 127
+        testRunner.And("With the following weekly schedule", ((string)(null)), table23, "And ");
+#line hidden
+#line 130
+        testRunner.And("I have registered the doctor \'Sam\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Patient",
+                            "Doctor",
+                            "AppointmentTime",
+                            "AppointmentDuration"});
+                table24.AddRow(new string[] {
+                            "John",
+                            "Smith",
+                            string.Format("{0}", firstAppointmentTime),
+                            string.Format("{0}", appointmentDuration)});
+#line 131
+        testRunner.And("An appointment with the following properties has already been registered", ((string)(null)), table24, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Patient",
+                            "Doctor",
+                            "AppointmentTime",
+                            "AppointmentDuration"});
+                table25.AddRow(new string[] {
+                            "John",
+                            "Mary",
+                            string.Format("{0}", secondAppointmentTime),
+                            string.Format("{0}", appointmentDuration)});
+#line 134
+        testRunner.And("An appointment with the following properties has already been registered", ((string)(null)), table25, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Patient",
+                            "Doctor",
+                            "AppointmentTime",
+                            "AppointmentDuration"});
+                table26.AddRow(new string[] {
+                            "John",
+                            "Sam",
+                            string.Format("{0}", thirdAppointmentTime),
+                            string.Format("{0}", appointmentDuration)});
+#line 137
+        testRunner.When("I set appointment with the following properties", ((string)(null)), table26, "When ");
+#line hidden
+#line 140
+        testRunner.Then("Exception with the code \'BR-AP-103\' should be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Patient`s appointment should not overlapped")]
+        [Xunit.TraitAttribute("FeatureTitle", "SetAppointment")]
+        [Xunit.TraitAttribute("Description", "Patient`s appointment should not overlapped")]
+        [Xunit.InlineDataAttribute("2023-12-10 10:00", "2023-12-10 10:09", "10", "GeneralPractitioner", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-10 10:10", "2023-12-10 10:05", "10", "GeneralPractitioner", new string[0])]
+        public void PatientSAppointmentShouldNotOverlapped(string firstAppointmentTime, string secondAppointmentTime, string appointmentDuration, string doctorSpeciality, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("FirstAppointmentTime", firstAppointmentTime);
+            argumentsOfScenario.Add("SecondAppointmentTime", secondAppointmentTime);
+            argumentsOfScenario.Add("AppointmentDuration", appointmentDuration);
+            argumentsOfScenario.Add("DoctorSpeciality", doctorSpeciality);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Patient`s appointment should not overlapped", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 146
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table27.AddRow(new string[] {
+                            "John"});
+#line 147
+        testRunner.Given("There is a registered patient with the following properties", ((string)(null)), table27, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "DoctorSpeciality"});
+                table28.AddRow(new string[] {
+                            "Smith",
+                            string.Format("{0}", doctorSpeciality)});
+#line 150
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table28, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
+                            "DayOfWeek",
+                            "DaySchedules"});
+                table29.AddRow(new string[] {
+                            "Sunday",
+                            "10:00:00-12:00:00, 15:00:00-18:00:00"});
+#line 153
+        testRunner.And("With the following weekly schedule", ((string)(null)), table29, "And ");
+#line hidden
+#line 156
+        testRunner.And("I have registered the doctor \'Smith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "DoctorSpeciality"});
+                table30.AddRow(new string[] {
+                            "Mary",
+                            string.Format("{0}", doctorSpeciality)});
+#line 157
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table30, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
+                            "DayOfWeek",
+                            "DaySchedules"});
+                table31.AddRow(new string[] {
+                            "Sunday",
+                            "10:00:00-12:00:00, 15:00:00-18:00:00"});
+#line 160
+        testRunner.And("With the following weekly schedule", ((string)(null)), table31, "And ");
+#line hidden
+#line 163
+        testRunner.And("I have registered the doctor \'Mary\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Patient",
+                            "Doctor",
+                            "AppointmentTime",
+                            "AppointmentDuration"});
+                table32.AddRow(new string[] {
+                            "John",
+                            "Smith",
+                            string.Format("{0}", firstAppointmentTime),
+                            string.Format("{0}", appointmentDuration)});
+#line 164
+        testRunner.And("An appointment with the following properties has already been registered", ((string)(null)), table32, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Patient",
+                            "Doctor",
+                            "AppointmentTime",
+                            "AppointmentDuration"});
+                table33.AddRow(new string[] {
+                            "John",
+                            "Mary",
+                            string.Format("{0}", secondAppointmentTime),
+                            string.Format("{0}", appointmentDuration)});
+#line 167
+        testRunner.When("I set appointment with the following properties", ((string)(null)), table33, "When ");
+#line hidden
+#line 170
+        testRunner.Then("Exception with the code \'BR-AP-104\' should be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -325,7 +651,7 @@ namespace Appointment.specs.Features.Appointments
             argumentsOfScenario.Add("NumberOfRegisteredAppointment", numberOfRegisteredAppointment);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The number of Doctor`s overlapping appointments should not exceeded the allowed n" +
                     "umber of total overlapping appointment at the day", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 77
+#line 177
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -335,108 +661,108 @@ namespace Appointment.specs.Features.Appointments
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name"});
-                table13.AddRow(new string[] {
+                table34.AddRow(new string[] {
                             "John"});
-#line 78
-        testRunner.Given("There is a registered patient with the following properties", ((string)(null)), table13, "Given ");
+#line 178
+        testRunner.Given("There is a registered patient with the following properties", ((string)(null)), table34, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name"});
-                table14.AddRow(new string[] {
+                table35.AddRow(new string[] {
                             "Bob"});
-#line 81
-        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table14, "And ");
+#line 181
+        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table35, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name"});
-                table15.AddRow(new string[] {
+                table36.AddRow(new string[] {
                             "Sara"});
-#line 84
-        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table15, "And ");
+#line 184
+        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table36, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name"});
-                table16.AddRow(new string[] {
+                table37.AddRow(new string[] {
                             "Alex"});
-#line 87
-        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table16, "And ");
+#line 187
+        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table37, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name"});
-                table17.AddRow(new string[] {
+                table38.AddRow(new string[] {
                             "Emma"});
-#line 90
-        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table17, "And ");
+#line 190
+        testRunner.And("There is a registered patient with the following properties", ((string)(null)), table38, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "DoctorSpeciality"});
-                table18.AddRow(new string[] {
+                table39.AddRow(new string[] {
                             "Smith",
                             string.Format("{0}", doctorSpeciality)});
-#line 93
-        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table18, "And ");
+#line 193
+        testRunner.And("A Doctor has been defined with the following properties", ((string)(null)), table39, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                             "DayOfWeek",
                             "DaySchedules"});
-                table19.AddRow(new string[] {
+                table40.AddRow(new string[] {
                             "Sunday",
                             "10:00:00-12:00:00, 15:00:00-19:00:00"});
-                table19.AddRow(new string[] {
+                table40.AddRow(new string[] {
                             "Wednesday",
                             "10:00:00-12:00:00, 15:00:00-19:00:00"});
-#line 96
-        testRunner.And("With the following weekly schedule", ((string)(null)), table19, "And ");
+#line 196
+        testRunner.And("With the following weekly schedule", ((string)(null)), table40, "And ");
 #line hidden
-#line 100
+#line 200
         testRunner.And("I have registered the doctor \'Smith\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
                             "Patient",
                             "Doctor",
                             "AppointmentTime",
                             "AppointmentDuration"});
-                table20.AddRow(new string[] {
+                table41.AddRow(new string[] {
                             "John",
                             "Smith",
                             string.Format("{0}", appointmentTime),
                             string.Format("{0}", appointmentDuration)});
-                table20.AddRow(new string[] {
+                table41.AddRow(new string[] {
                             "Bob",
                             "Smith",
                             string.Format("{0}", appointmentTime),
                             string.Format("{0}", appointmentDuration)});
-                table20.AddRow(new string[] {
+                table41.AddRow(new string[] {
                             "Sara",
                             "Smith",
                             string.Format("{0}", appointmentTime),
                             string.Format("{0}", appointmentDuration)});
-                table20.AddRow(new string[] {
+                table41.AddRow(new string[] {
                             "Alex",
                             "Smith",
                             string.Format("{0}", appointmentTime),
                             string.Format("{0}", appointmentDuration)});
-#line 101
+#line 201
         testRunner.And(string.Format("\'{0}\' overlapping appointments with the following properties has already been reg" +
-                            "istered", numberOfRegisteredAppointment), ((string)(null)), table20, "And ");
+                            "istered", numberOfRegisteredAppointment), ((string)(null)), table41, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
                             "Patient",
                             "Doctor",
                             "AppointmentTime",
                             "AppointmentDuration"});
-                table21.AddRow(new string[] {
+                table42.AddRow(new string[] {
                             "Emma",
                             "Smith",
                             string.Format("{0}", appointmentTime),
                             string.Format("{0}", appointmentDuration)});
-#line 107
-        testRunner.When("I set appointment with the following properties", ((string)(null)), table21, "When ");
+#line 207
+        testRunner.When("I set appointment with the following properties", ((string)(null)), table42, "When ");
 #line hidden
-#line 110
+#line 210
         testRunner.Then("Exception with the code \'BR-AP-105\' should be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

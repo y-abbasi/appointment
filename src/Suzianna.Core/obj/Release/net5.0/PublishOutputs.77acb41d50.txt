@@ -1,4 +1,0 @@
-/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/bin/Release/net5.0/publish/Suzianna.Core.dll
-/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/bin/Release/net5.0/publish/Suzianna.Core.deps.json
-/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/bin/Release/net5.0/publish/Suzianna.Core.pdb
-/Users/dev-art/RiderProjects/traders-backend/specs/Suzianna.Core/bin/Release/net5.0/publish/NFluent.dll
