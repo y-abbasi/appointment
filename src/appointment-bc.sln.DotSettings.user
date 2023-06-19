@@ -1,7 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8ca4b5d0_002Dbcee_002D4db5_002Dbe0f_002Da0dc0c971177/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SetAppointmentFeature" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::A79EDE4A-4AEB-492B-9C9E-35233DF0C53E::net7.0::Appointment.Domain.Tests.Appointments.SetAppointmentFeature&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::53D36A39-940F-434B-8F03-BB495E2FB2E6::net6.0::Appointment.specs.Features.Appointments.SetAppointmentFeature.AppointmentMustBeInValidTime&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

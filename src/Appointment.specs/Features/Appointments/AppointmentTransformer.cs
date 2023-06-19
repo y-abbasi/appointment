@@ -17,7 +17,7 @@ public class AppointmentTransformer
         _actor = stage.ActorInTheSpotlight;
     }
     [StepArgumentTransformation]
-    public SetAppointmentCommand ToDefineCommand(Table table)
+    public SetAppointmentCommand SetAppointmentCommand(Table table)
     {
         var model = table.CreateInstance<AppointmentModel>();
         return new(
@@ -25,5 +25,16 @@ public class AppointmentTransformer
             _actor.Recall<PatientModel>(model.Patient).Id,
             model.AppointmentTime,
             model.AppointmentDuration);
+    }
+    [StepArgumentTransformation]
+    public List<SetAppointmentCommand> SetAppointmentCommands(Table table)
+    {
+        var models = table.CreateSet<AppointmentModel>();
+        return models.Select(model => new SetAppointmentCommand(
+            _actor.Recall<string>(model.Doctor),
+            _actor.Recall<PatientModel>(model.Patient).Id,
+            model.AppointmentTime,
+            model.AppointmentDuration))
+            .ToList();
     }
 }
