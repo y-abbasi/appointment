@@ -143,6 +143,37 @@ Link to a feature: [Calculator]($projectname$/Features/SetAppointment.feature)
           | FirstAppointmentTime | SecondAppointmentTime | ThirdAppointmentTime | AppointmentDuration | DoctorSpeciality    |
           | 2023-12-10 10:00     | 2023-12-10 10:30      | 2023-12-10 11:00     | 10                  | GeneralPractitioner |
 
+    Scenario Outline: Patient`s appointment should not overlapped
+        Given There is a registered patient with the following properties
+          | Name |
+          | John |
+        And A Doctor has been defined with the following properties
+          | Name  | DoctorSpeciality   |
+          | Smith | <DoctorSpeciality> |
+        And With the following weekly schedule
+          | DayOfWeek | DaySchedules                         |
+          | Sunday    | 10:00:00-12:00:00, 15:00:00-18:00:00 |
+        And I have registered the doctor 'Smith'
+        And A Doctor has been defined with the following properties
+          | Name | DoctorSpeciality   |
+          | Mary | <DoctorSpeciality> |
+        And With the following weekly schedule
+          | DayOfWeek | DaySchedules                         |
+          | Sunday    | 10:00:00-12:00:00, 15:00:00-18:00:00 |
+        And I have registered the doctor 'Mary'
+        And An appointment with the following properties has already been registered
+          | Patient | Doctor | AppointmentTime        | AppointmentDuration   |
+          | John    | Smith  | <FirstAppointmentTime> | <AppointmentDuration> |
+        When I set appointment with the following properties
+          | Patient | Doctor | AppointmentTime        | AppointmentDuration   |
+          | John    | Mary   | <SecondAppointmentTime> | <AppointmentDuration> |
+        Then Exception with the code 'BR-AP-104' should be thrown
+
+        Examples:
+          | FirstAppointmentTime | SecondAppointmentTime | AppointmentDuration | DoctorSpeciality    |
+          | 2023-12-10 10:00     | 2023-12-10 10:09      | 10                  | GeneralPractitioner |
+          | 2023-12-10 10:10     | 2023-12-10 10:05      | 10                  | GeneralPractitioner |
+
     Scenario Outline: The number of Doctor`s overlapping appointments should not exceeded the allowed number of total overlapping appointment at the day
         Given There is a registered patient with the following properties
           | Name |
