@@ -22,17 +22,17 @@ public class AppointmentsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task Create(SetAppointment setAppointment)
+    public async Task<string> Create(SetAppointment setAppointment)
     {
         var command = setAppointment.ToCommand();
         await _commandBus.Dispatch<AppointmentAggregateActor, AppointmentId>(command);
-        //return command.
+        return command.TrackingCode;
     }
 }
 
 public record SetAppointment(string DoctorId, string PatientId, DateTime AppointmentTime, int Duration)
 {
     public SetAppointmentCommand ToCommand() => new SetAppointmentCommand(
-        new AppointmentId(AppointmentTime.ToDateOnly(), new DoctorId(DoctorId)), new PatientId(PatientId),
+        new AppointmentId(AppointmentTime.ToDateOnly(), new DoctorId(DoctorId)), Guid.NewGuid().ToString(), new PatientId(PatientId),
         AppointmentTime, TimeSpan.FromMinutes(Duration), new UserId(""), new TenantId(""));
 }

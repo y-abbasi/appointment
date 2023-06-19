@@ -10,7 +10,7 @@ public interface IAppointment : IAggregateRoot<IAppointmentState, AppointmentId>
 {
 }
 
-public record AppointmentEntity(DoctorId DoctorId, PatientId PatientId, DateTime AppointmentTime,
+public record AppointmentEntity(string TrackingCode, DoctorId DoctorId, PatientId PatientId, DateTime AppointmentTime,
     TimeSpan AppointmentDuration);
 
 public interface IAppointmentService
@@ -19,7 +19,7 @@ public interface IAppointmentService
         DateOnly appointmentDate);
 }
 
-public record SetAppointmentArg(PatientId PatientId, DateTime AppointmentTime, TimeSpan AppointmentDuration,
+public record SetAppointmentArg(string TrackingCode, PatientId PatientId, DateTime AppointmentTime, TimeSpan AppointmentDuration,
     IAppointmentService AppointmentService, IDoctorService DoctorService);
 
 public record AppointmentId(DateOnly Date, DoctorId DoctorId) : IIdentifier
@@ -31,7 +31,7 @@ public record AppointmentId(DateOnly Date, DoctorId DoctorId) : IIdentifier
 public record AppointmentEvent(AppointmentId AggregateId, long Version) : DomainEvent<AppointmentId>(AggregateId,
     "Appointment", Version);
 
-public record AppointmentSetsEvent(AppointmentId AggregateId, PatientId PatientId, DateTime AppointmentTime,
+public record AppointmentSetsEvent(AppointmentId AggregateId, string TrackingCode, PatientId PatientId, DateTime AppointmentTime,
     TimeSpan AppointmentDuration,
     long Version) : AppointmentEvent(AggregateId, Version);
 

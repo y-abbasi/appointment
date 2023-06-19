@@ -33,7 +33,7 @@ public class AppointmentService : IAppointmentService
         foreach (var resolvedEvent in events.Events)
         {
             if (_eventAdapter.Adapt(resolvedEvent).Payload is AppointmentSetsEvent evt)
-                appointments = appointments.Add(new AppointmentEntity(@evt.AggregateId.DoctorId, @evt.PatientId,
+                appointments = appointments.Add(new AppointmentEntity(@evt.TrackingCode, @evt.AggregateId.DoctorId, @evt.PatientId,
                     @evt.AppointmentTime, @evt.AppointmentDuration));
         }
         return appointments;

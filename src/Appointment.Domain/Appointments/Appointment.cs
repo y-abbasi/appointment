@@ -40,7 +40,7 @@ public partial class Appointment : AggregateRoot<IAppointmentState, AppointmentI
         GuardAgainstInvalidOverlappingAppointment(doctor, arg.AppointmentTime, arg.AppointmentDuration);
         return new List<IDomainEvent<AppointmentId>>()
         {
-            Process(new AppointmentSetsEvent(Id, arg.PatientId, arg.AppointmentTime, arg.AppointmentDuration,
+            Process(new AppointmentSetsEvent(Id, arg.TrackingCode, arg.PatientId, arg.AppointmentTime, arg.AppointmentDuration,
                 AggregateState.Version + 1))
         };
     }

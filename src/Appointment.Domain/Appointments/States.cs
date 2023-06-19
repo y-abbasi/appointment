@@ -16,7 +16,7 @@ public record AppointmentInitializedState(AppointmentId Id, long Version) : IApp
     {
         return this with
         {
-            Appointments = Appointments.Add(new AppointmentEntity(Id.DoctorId, @event.PatientId,
+            Appointments = Appointments.Add(new AppointmentEntity(@event.TrackingCode, Id.DoctorId, @event.PatientId,
                 @event.AppointmentTime, @event.AppointmentDuration)),
             NumberOfOverlappingAppointment = NumberOfOverlappingAppointment +
                                              (Appointments.HasNotOverlapWith(@event.AppointmentTime,

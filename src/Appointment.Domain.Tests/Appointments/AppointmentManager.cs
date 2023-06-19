@@ -48,7 +48,7 @@ internal class AppointmentManager
             var id = new AppointmentId(appointmentTime.ToDateOnly(), _doctor.Id);
             var appointment = GetAppointment(id);
             _raisedEvent =
-                await appointment.Do(new SetAppointmentArg(_patientId!, appointmentTime, appointmentDuration,
+                await appointment.Do(new SetAppointmentArg("",_patientId!, appointmentTime, appointmentDuration,
                     _appointmentService, _doctorService));
         };
     }
@@ -72,6 +72,7 @@ internal class AppointmentManager
     public void AppointmentSetsProperly(DateTime appointmentTime, TimeSpan appointmentDuration)
     {
         var expected = new AppointmentSetsEvent(new AppointmentId(appointmentTime.ToDateOnly(), _doctor.Id),
+            "",
             _patientId!,
             appointmentTime, appointmentDuration, 1);
         _raisedEvent.First().Should()
@@ -94,11 +95,12 @@ internal class AppointmentManager
         var id = new AppointmentId(appointmentTime.ToDateOnly(), _doctor.Id);
         var appointment = GetAppointment(id);
         appointment.Process(new AppointmentSetsEvent(new AppointmentId(appointmentTime.ToDateOnly(), _doctor.Id),
+            "",
             patientId!,
             appointmentTime, appointmentDuration, 1));
         var appointments =
             await _appointmentService.GetPatientAppointmentsInDay(patientId!, appointmentTime.ToDateOnly());
-        appointments = appointments.Add(new(_doctor.Id, patientId!, appointmentTime, appointmentDuration));
+        appointments = appointments.Add(new("A-100", _doctor.Id, patientId!, appointmentTime, appointmentDuration));
         _appointmentService.GetPatientAppointmentsInDay(patientId!, appointmentTime.ToDateOnly())
             .Returns(Task.FromResult(appointments));
     }
