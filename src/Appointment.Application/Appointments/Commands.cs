@@ -17,3 +17,10 @@ public record SetAppointmentCommand(AppointmentId Id, string TrackingCode, Patie
 public interface IAppointmentCommand : ICommand<AppointmentId>
 {
 }
+public record GetAppointmentByTrackingCode(AppointmentId Id, string TrackingCode) : ICommand<AppointmentId>
+{
+    public UserId UserId { get; init; }
+    public TenantId TenantId { get; init; }
+}
+public record AppointmentResponse(string TrackingCode, string DoctorId, string PatientId, DateTime AppointmentTime,
+    TimeSpan Duration);

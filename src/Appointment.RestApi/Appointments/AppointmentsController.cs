@@ -28,11 +28,20 @@ public class AppointmentsController : ControllerBase
         await _commandBus.Dispatch<AppointmentAggregateActor, AppointmentId>(command);
         return command.TrackingCode;
     }
+
+    [HttpGet("{appointmentDay}/{doctorId}/{trackingCode}")]
+    public async Task<AppointmentResponse> GetByTrackingCode(string doctorId, DateOnly appointmentDay,
+        string trackingCode)
+    {
+        return await _commandBus.Request<AppointmentAggregateActor, AppointmentId, AppointmentResponse>(
+            new GetAppointmentByTrackingCode(new AppointmentId(appointmentDay, new DoctorId(doctorId)), trackingCode));
+    }
 }
 
 public record SetAppointment(string DoctorId, string PatientId, DateTime AppointmentTime, int Duration)
 {
     public SetAppointmentCommand ToCommand() => new SetAppointmentCommand(
-        new AppointmentId(AppointmentTime.ToDateOnly(), new DoctorId(DoctorId)), Guid.NewGuid().ToString(), new PatientId(PatientId),
+        new AppointmentId(AppointmentTime.ToDateOnly(), new DoctorId(DoctorId)), Guid.NewGuid().ToString(),
+        new PatientId(PatientId),
         AppointmentTime, TimeSpan.FromMinutes(Duration), new UserId(""), new TenantId(""));
 }

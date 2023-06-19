@@ -21,22 +21,7 @@ public interface ICommandDispatcher
 
 {
     Task Dispatch<TApp, TKey>(ICommand<TKey> command) where TKey : IValueObject where TApp : ActorBase;
-}
-
-public class InmemoryCommandDispatcher : ICommandDispatcher
-{
-    private readonly ActorSystem _system;
-
-    public InmemoryCommandDispatcher(ActorSystem system)
-    {
-        _system = system;
-    }
-
-    public async Task Dispatch<TApp, TKey>(ICommand<TKey> command) where TKey : IValueObject where TApp : ActorBase
-    {
-        var actorRef = _system.ActorOf(DependencyResolver.For(_system).Props<TApp>(command.Id), typeof(TApp).Name);
-        await actorRef.Ask(command);
-    }
+    Task<TResult> Request<TApp, TKey, TResult>(ICommand<TKey> command) where TKey : IValueObject where TApp : ActorBase;
 }
 
 public class ShardCommandDispatcher : ICommandDispatcher
@@ -53,6 +38,11 @@ public class ShardCommandDispatcher : ICommandDispatcher
         var result = await _provider.GetService<ActorRefProvider<TApp>>().Ask(command);
         if (result is Exception ex)
             throw ex;
+    }
+
+    public async Task<TResult> Request<TApp, TKey, TResult>(ICommand<TKey> command) where TApp : ActorBase where TKey : IValueObject
+    {
+        return await _provider.GetService<ActorRefProvider<TApp>>().Ask<TResult>(command);
     }
 }
 

@@ -13,8 +13,8 @@ public class AppointmentAbilities : IAppointmentAbilities
         return Post.DataAsJson(command).To($"appointments");
     }
 
-    public IQuestion<AppointmentResponse> GetLastCreatedAppointment()
+    public IQuestion<AppointmentResponse> GetLastCreatedAppointment(DateOnly appointmentDate, string doctorId)
     {
-        return new GetLastSubmittedAppointmentQuestion();
+        return new GetLastSubmittedAppointmentQuestion(appointmentDate, doctorId);
     }
 }

@@ -31,7 +31,13 @@ public class AppointmentSteps
     public void ThenICanFindAnAppointmentWithAboveInfo()
     {
         var expected = _context.Get<SetAppointmentCommand>();
-        var actual = _actor.AsksFor(_appointmentAbilities.GetLastCreatedAppointment());
-        actual.Should().Be(expected);
+        var actual =
+            _actor.AsksFor(_appointmentAbilities.GetLastCreatedAppointment(expected.AppointmentTime.ToDateOnly(),
+                expected.DoctorId));
+        actual.Should().BeEquivalentTo(new
+        {
+            expected.DoctorId, expected.PatientId, expected.AppointmentTime,
+            Duration = TimeSpan.FromMinutes(expected.Duration)
+        });
     }
 }

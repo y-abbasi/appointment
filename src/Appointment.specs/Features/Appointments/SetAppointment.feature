@@ -23,12 +23,12 @@ Link to a feature: [Calculator]($projectname$/Features/SetAppointment.feature)
         Examples:
           | AppointmentTime  | AppointmentDuration | DoctorSpeciality    |
           | 2023-12-10 10:00 | 5                   | GeneralPractitioner |
-          | 2023-12-14 10:00 | 15                  | GeneralPractitioner |
+          | 2023-12-13 10:00 | 15                  | GeneralPractitioner |
           | 2023-12-10 12:00 | 15                  | GeneralPractitioner |
           | 2023-12-10 15:00 | 5                   | GeneralPractitioner |
-          | 2023-12-14 19:00 | 15                  | GeneralPractitioner |
+          | 2023-12-13 19:00 | 15                  | GeneralPractitioner |
           | 2023-12-10 10:00 | 10                  | Specialist          |
-          | 2023-12-14 10:00 | 30                  | Specialist          |
+          | 2023-12-13 10:00 | 30                  | Specialist          |
           | 2023-12-10 12:00 | 10                  | Specialist          |
           | 2023-12-10 15:00 | 30                  | Specialist          |
-          | 2023-12-14 19:00 | 10                  | Specialist          |
+          | 2023-12-13 19:00 | 10                  | Specialist          |

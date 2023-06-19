@@ -85,15 +85,15 @@ namespace Appointment.specs.Features.Appointments
         [Xunit.TraitAttribute("FeatureTitle", "SetAppointment")]
         [Xunit.TraitAttribute("Description", "Appointment must be in valid time")]
         [Xunit.InlineDataAttribute("2023-12-10 10:00", "5", "GeneralPractitioner", new string[0])]
-        [Xunit.InlineDataAttribute("2023-12-14 10:00", "15", "GeneralPractitioner", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-13 10:00", "15", "GeneralPractitioner", new string[0])]
         [Xunit.InlineDataAttribute("2023-12-10 12:00", "15", "GeneralPractitioner", new string[0])]
         [Xunit.InlineDataAttribute("2023-12-10 15:00", "5", "GeneralPractitioner", new string[0])]
-        [Xunit.InlineDataAttribute("2023-12-14 19:00", "15", "GeneralPractitioner", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-13 19:00", "15", "GeneralPractitioner", new string[0])]
         [Xunit.InlineDataAttribute("2023-12-10 10:00", "10", "Specialist", new string[0])]
-        [Xunit.InlineDataAttribute("2023-12-14 10:00", "30", "Specialist", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-13 10:00", "30", "Specialist", new string[0])]
         [Xunit.InlineDataAttribute("2023-12-10 12:00", "10", "Specialist", new string[0])]
         [Xunit.InlineDataAttribute("2023-12-10 15:00", "30", "Specialist", new string[0])]
-        [Xunit.InlineDataAttribute("2023-12-14 19:00", "10", "Specialist", new string[0])]
+        [Xunit.InlineDataAttribute("2023-12-13 19:00", "10", "Specialist", new string[0])]
         public void AppointmentMustBeInValidTime(string appointmentTime, string appointmentDuration, string doctorSpeciality, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

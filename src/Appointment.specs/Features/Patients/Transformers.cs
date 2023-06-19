@@ -8,6 +8,6 @@ public class Transformers
     [StepArgumentTransformation]
     public PatientModel ToDefine(Table table)
     {
-        return table.CreateInstance<PatientModel>() with { Id = Guid.NewGuid() };
+        return table.CreateInstance<PatientModel>() with { Id = Guid.NewGuid().ToString() };
     }
 }

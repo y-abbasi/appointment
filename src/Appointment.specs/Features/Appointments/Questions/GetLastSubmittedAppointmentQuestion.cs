@@ -7,9 +7,17 @@ namespace Appointment.specs.Features.Appointments.Questions;
 
 internal class GetLastSubmittedAppointmentQuestion : IQuestion<AppointmentResponse>
 {
+    private readonly DateOnly _appointmentDate;
+    private readonly string _doctorId;
+
+    public GetLastSubmittedAppointmentQuestion(DateOnly appointmentDate, string doctorId)
+    {
+        _appointmentDate = appointmentDate;
+        _doctorId = doctorId;
+    }
     public AppointmentResponse AnsweredBy(Actor actor)
     {
-        var id = actor.AsksFor(LastResponse.Raw()).Content.ReadAsStringAsync().Result;
-        return new GetSubmittedAppointmentByIdQuestion(id).AnsweredBy(actor);
+        var trackingCode = actor.AsksFor(LastResponse.Raw()).Content.ReadAsStringAsync().Result;
+        return new GetSubmittedAppointmentByTrackingCodeQuestion(_appointmentDate, _doctorId, trackingCode).AnsweredBy(actor);
     }
 }

@@ -9,7 +9,7 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
 /*If you drop a custom stylesheet named BDDfyCustom.css in your output folder it gets embedded here. This way you can apply some custom styles over your html report.*/
 
     </style>
-    <title>BDDfy Test Result 6/18/2023</title>
+    <title>BDDfy Test Result 6/19/2023</title>
   </head>
   <body>
     <div id='main'>
@@ -29,13 +29,13 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
           <li class='scenarioSummary'>
             <div class='summaryLine'>
               <div class='summaryLabel'>Scenarios</div>
-              <span class='summaryCount'>2</span>
+              <span class='summaryCount'>12</span>
             </div>
           </li>
           <li class='Passed'>
             <div class='summaryLine'>
               <div class='summaryLabel'>Passed</div>
-              <span class='summaryCount'>2</span>
+              <span class='summaryCount'>12</span>
             </div>
           </li>
           <li class='Inconclusive'>
@@ -77,6 +77,265 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
                 </ul>
               </div>
               <div class='scenarios'>
+                <div class='scenario'>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-2'>Appointment sets properly</div>
+                  <ul class='steps' id='scenario-2'>
+                    <li class='step SetupState'>
+                      <span>Given a patient has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given a doctor has been defined</span>
+                    </li>
+                    <li class='step Transition'>
+                      <span>When I set appointment at specific time</span>
+                    </li>
+                    <li class='step Assertion'>
+                      <span>Then rule created properly</span>
+                    </li>
+                    <li class='step'>
+                      <span class='example-header'>Examples:</span>
+                      <table class='examples' style='border-collapse: collapse;margin-left:10px''>
+                        <tr>
+                          <th></th>
+                          <th>doctor speciality</th>
+                          <th>weekly schedule</th>
+                          <th>appointment time</th>
+                          <th>appointment duration</th>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>GeneralPractitioner</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/18/2023 11:00:00 AM</td>
+                          <td>00:10:00</td>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>GeneralPractitioner</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/18/2023 3:00:00 PM</td>
+                          <td>00:10:00</td>
+                        </tr>
+                      </table>
+                    </li>
+                  </ul>
+                </div>
+                <div class='scenario'>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-3'>Appointments of patient should be less than two at the same day</div>
+                  <ul class='steps' id='scenario-3'>
+                    <li class='step SetupState'>
+                      <span>Given a patient has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given a doctor has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given patient set appointment before</span>
+                    </li>
+                    <li class='step Transition'>
+                      <span>When I set appointment at specific time</span>
+                    </li>
+                    <li class='step Assertion'>
+                      <span>Then exception should be thrown</span>
+                    </li>
+                    <li class='step'>
+                      <span class='example-header'>Examples:</span>
+                      <table class='examples' style='border-collapse: collapse;margin-left:10px''>
+                        <tr>
+                          <th></th>
+                          <th>first appointment time</th>
+                          <th>first appointment duration</th>
+                          <th>second appointment time</th>
+                          <th>second appointment duration</th>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>12/18/2023 9:00:00 AM</td>
+                          <td>00:15:00</td>
+                          <td>12/18/2023 9:14:00 AM</td>
+                          <td>00:15:00</td>
+                        </tr>
+                      </table>
+                    </li>
+                  </ul>
+                </div>
+                <div class='scenario'>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-4'>Appointments of patient should not overlap</div>
+                  <ul class='steps' id='scenario-4'>
+                    <li class='step SetupState'>
+                      <span>Given a patient has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given a doctor has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given patient set appointment before</span>
+                    </li>
+                    <li class='step Transition'>
+                      <span>When I set appointment at specific time</span>
+                    </li>
+                    <li class='step Assertion'>
+                      <span>Then exception should be thrown</span>
+                    </li>
+                    <li class='step'>
+                      <span class='example-header'>Examples:</span>
+                      <table class='examples' style='border-collapse: collapse;margin-left:10px''>
+                        <tr>
+                          <th></th>
+                          <th>first appointment time</th>
+                          <th>first appointment duration</th>
+                          <th>second appointment time</th>
+                          <th>second appointment duration</th>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>12/18/2023 9:00:00 AM</td>
+                          <td>00:15:00</td>
+                          <td>12/18/2023 9:14:00 AM</td>
+                          <td>00:15:00</td>
+                        </tr>
+                      </table>
+                    </li>
+                  </ul>
+                </div>
+                <div class='scenario'>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-6'>The appointment duration should be appropriate to the type of doctors speciality</div>
+                  <ul class='steps' id='scenario-6'>
+                    <li class='step SetupState'>
+                      <span>Given a patient has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given a doctor has been defined</span>
+                    </li>
+                    <li class='step Transition'>
+                      <span>When I set appointment at specific time</span>
+                    </li>
+                    <li class='step Assertion'>
+                      <span>Then exception should be thrown</span>
+                    </li>
+                    <li class='step'>
+                      <span class='example-header'>Examples:</span>
+                      <table class='examples' style='border-collapse: collapse;margin-left:10px''>
+                        <tr>
+                          <th></th>
+                          <th>doctor speciality</th>
+                          <th>weekly schedule</th>
+                          <th>appointment time</th>
+                          <th>appointment duration</th>
+                          <th>exception code</th>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>GeneralPractitioner</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/10/2023 9:00:00 AM</td>
+                          <td>00:16:00</td>
+                          <td>BR-AP-101</td>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>GeneralPractitioner</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/10/2023 7:00:00 PM</td>
+                          <td>00:04:00</td>
+                          <td>BR-AP-101</td>
+                        </tr>
+                      </table>
+                    </li>
+                  </ul>
+                </div>
+                <div class='scenario'>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-7'>The appointment should be during doctors presents</div>
+                  <ul class='steps' id='scenario-7'>
+                    <li class='step SetupState'>
+                      <span>Given a patient has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given a doctor has been defined</span>
+                    </li>
+                    <li class='step Transition'>
+                      <span>When I set appointment at specific time</span>
+                    </li>
+                    <li class='step Assertion'>
+                      <span>Then exception should be thrown</span>
+                    </li>
+                    <li class='step'>
+                      <span class='example-header'>Examples:</span>
+                      <table class='examples' style='border-collapse: collapse;margin-left:10px''>
+                        <tr>
+                          <th></th>
+                          <th>doctor speciality</th>
+                          <th>weekly schedule</th>
+                          <th>appointment time</th>
+                          <th>appointment duration</th>
+                          <th>exception code</th>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>GeneralPractitioner</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/10/2023 9:00:00 AM</td>
+                          <td>00:15:00</td>
+                          <td>BR-AP-102</td>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>Specialist</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/18/2023 1:00:00 PM</td>
+                          <td>00:10:00</td>
+                          <td>BR-AP-102</td>
+                        </tr>
+                      </table>
+                    </li>
+                  </ul>
+                </div>
+                <div class='scenario'>
+                  <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-5'>The appointment time must be within the working hours of the clinic</div>
+                  <ul class='steps' id='scenario-5'>
+                    <li class='step SetupState'>
+                      <span>Given a patient has been defined</span>
+                    </li>
+                    <li class='step SetupState'>
+                      <span>Given a doctor has been defined</span>
+                    </li>
+                    <li class='step Transition'>
+                      <span>When I set appointment at specific time</span>
+                    </li>
+                    <li class='step Assertion'>
+                      <span>Then exception should be thrown</span>
+                    </li>
+                    <li class='step'>
+                      <span class='example-header'>Examples:</span>
+                      <table class='examples' style='border-collapse: collapse;margin-left:10px''>
+                        <tr>
+                          <th></th>
+                          <th>doctor speciality</th>
+                          <th>weekly schedule</th>
+                          <th>appointment time</th>
+                          <th>appointment duration</th>
+                          <th>exception code</th>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>GeneralPractitioner</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/10/2023 8:59:00 AM</td>
+                          <td>00:15:00</td>
+                          <td>BR-AP-100</td>
+                        </tr>
+                        <tr>
+                          <td><Span class='Passed' style='margin-right:4px;' /></td>
+                          <td>Specialist</td>
+                          <td>WeeklySchedule { DailySchedules = System.Collections.Immutable.ImmutableArray`1[Appointment.Domain.DailySchedule] }</td>
+                          <td>12/10/2023 7:01:00 PM</td>
+                          <td>00:30:00</td>
+                          <td>BR-AP-100</td>
+                        </tr>
+                      </table>
+                    </li>
+                  </ul>
+                </div>
                 <div class='scenario'>
                   <div class='Passed canToggle scenarioTitle' data-toggle-target='scenario-1'>The number of doctors overlapping appointments should not exceeded the allowed number of overlapping appointments</div>
                   <ul class='steps' id='scenario-1'>
@@ -121,7 +380,7 @@ body{margin:0;padding:0;padding-bottom:40px;max-width:100%;background-color:#fff
             </div>
           </li>
         </ul>
-        <p><span>Tested at: 6/18/2023 6:12:29 PM</span></p>
+        <p><span>Tested at: 6/19/2023 3:42:09 AM</span></p>
       </div>
     </div>
     <div class='footer'>Powered by <a href='https://github.com/TestStack/TestStack.BDDfy'>BDDfy</a> framework</div>
