@@ -39,7 +39,7 @@ public class AppointmentExceptionCodes
 {
     public const string MustBeWithinWorkingHourOfClinic = "BR-AP-100";
     public const string MustBeAppropriateToTheDoctorSpeciality = "BR-AP-101";
-    public const string MustBeADuringTheDoctorsPresents = "BR-AP-102";
+    public const string MustBeDuringTheDoctorsPresents = "BR-AP-102";
     public const string PatientMustBeLessThanTwoAppointmentAtTheSameDay = "BR-AP-103";
     public const string AppointmentsOfPatientShouldNotOverlap = "BR-AP-104";
     public const string TheNumberOfDoctorsOverlappingAppointmentsShouldNotExceededTheAllowedNumberOfOverlappingAppointments = "BR-AP-105";

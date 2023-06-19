@@ -124,14 +124,14 @@ public class SetAppointmentFeature
                         weeklySchedule,
                         DateTime.Parse("2023-12-10 9:00"),
                         TimeSpan.FromMinutes(15),
-                        AppointmentExceptionCodes.MustBeADuringTheDoctorsPresents
+                        AppointmentExceptionCodes.MustBeDuringTheDoctorsPresents
                     },
                     {
                         DoctorSpeciality.Specialist,
                         weeklySchedule,
                         DateTime.Parse("2023-12-18 13:00"),
                         TimeSpan.FromMinutes(10),
-                        AppointmentExceptionCodes.MustBeADuringTheDoctorsPresents
+                        AppointmentExceptionCodes.MustBeDuringTheDoctorsPresents
                     },
                 }
             ).BDDfy<SetAppointmentFeature>();

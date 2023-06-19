@@ -65,7 +65,7 @@ public partial class Appointment : AggregateRoot<IAppointmentState, AppointmentI
     {
         WeeklySchedule weeklySchedule = doctor.WeeklySchedule;
         if (weeklySchedule.AcceptAppointmentTime(appointmentTime)) return;
-        throw new BusinessException(AppointmentExceptionCodes.MustBeADuringTheDoctorsPresents, "");
+        throw new BusinessException(AppointmentExceptionCodes.MustBeDuringTheDoctorsPresents, "");
     }
 
     private void GuardAgainstPatientMoreThanTwoAppointmentAtTheSameDate(
