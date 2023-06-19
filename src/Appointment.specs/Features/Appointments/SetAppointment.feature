@@ -50,6 +50,30 @@ Link to a feature: [Calculator]($projectname$/Features/SetAppointment.feature)
           | John    | Smith  | <AppointmentTime> | <AppointmentDuration> |
         Then Exception with the code 'BR-AP-101' should be thrown
 
+    Scenario Outline: Appointment time should be during the doctor`s presents
+        Given There is a registered patient with the following properties
+          | Name |
+          | John |
+        And A Doctor has been defined with the following properties
+          | Name  | DoctorSpeciality   |
+          | Smith | <DoctorSpeciality> |
+        And With the following weekly schedule
+          | DayOfWeek | DaySchedules                         |
+          | Sunday    | 10:00:00-12:00:00, 15:00:00-18:00:00 |
+          | Wednesday | 10:00:00-12:00:00, 15:00:00-18:00:00 |
+        And I have registered the doctor 'Smith'
+        When I set appointment with the following properties
+          | Patient | Doctor | AppointmentTime   | AppointmentDuration   |
+          | John    | Smith  | <AppointmentTime> | <AppointmentDuration> |
+        Then Exception with the code 'BR-AP-102' should be thrown
+
+        Examples:
+          | AppointmentTime  | AppointmentDuration | DoctorSpeciality    |
+          | 2023-12-11 10:00 | 10                  | GeneralPractitioner |
+          | 2023-12-13 09:59 | 10                  | GeneralPractitioner |
+          | 2023-12-13 12:01 | 10                  | GeneralPractitioner |
+          | 2023-12-13 18:01 | 10                  | GeneralPractitioner |
+
     Scenario Outline: The number of Doctor`s overlapping appointments should not exceeded the allowed number of total overlapping appointment at the day
         Given There is a registered patient with the following properties
           | Name |
